@@ -165,7 +165,9 @@ export default function PortfolioPage() {
     const goToPage = (page: number) => {
         if (page >= 1 && page <= totalPages) {
             setCurrentPage(page);
-            window.scrollTo({ top: 400, behavior: 'smooth' });
+            if (typeof window !== 'undefined') {
+                window.scrollTo({ top: 400, behavior: 'smooth' });
+            }
         }
     };
 
@@ -191,34 +193,41 @@ export default function PortfolioPage() {
                     ))}
                 </div>
 
-                {/* BEST 섹션 */}
-                {bestItems.length > 0 && (
-                    <section className={styles.bestSection}>
-                        <h2 className={styles.sectionTitle}>BEST</h2>
-                        <div className={styles.bestGrid}>
-                            {bestItems.map((item) => (
-                                <a key={item.id} href={`/portfolio/${item.id}`} className={styles.bestCard}>
-                                    <div className={styles.bestImageWrapper}>
-                                        <span className={styles.bestBadge}>BEST {item.bestRank}</span>
-                                        <img
-                                            src={item.thumbnail}
-                                            alt={item.title}
-                                            className={styles.cardImage}
-                                        />
+                {/* NEW PORTFOLIO 섹션 */}
+                <section className={styles.newSection}>
+                    <div className={styles.sectionHeader}>
+                        <h2 className={styles.sectionTitle}>NEW PORTFOLIO</h2>
+                        <p className={styles.sectionSubtitle}>새롭게 등록된 포트폴리오</p>
+                    </div>
+
+                    <div className={styles.newGrid}>
+                        {allPortfolioItems.filter(item => item.isNew).map((item) => (
+                            <div key={item.id} className={styles.newCard}>
+                                <div className={styles.newImageWrapper}>
+                                    <img
+                                        src={item.thumbnail}
+                                        alt={item.title}
+                                        className={styles.newCardImage}
+                                    />
+                                </div>
+                                <div className={styles.newCardContent}>
+                                    <h3 className={styles.newCardTitle}>{item.title}</h3>
+                                    <ul className={styles.newCardMeta}>
+                                        <li>
+                                            <span className={styles.metaLabel}>WORK :</span> {item.workType}
+                                        </li>
+                                        <li>
+                                            <span className={styles.metaLabel}>클라이언트 :</span> {item.client}
+                                        </li>
+                                    </ul>
+                                    <div className={styles.badgeWrapper}>
+                                        <span className={styles.purpleBadge}>NEW</span>
                                     </div>
-                                    <div className={styles.cardInfo}>
-                                        <h3 className={styles.cardTitle}>{item.title}</h3>
-                                        <ul className={styles.cardMeta}>
-                                            <li><strong>WORK</strong> {item.workType}</li>
-                                            <li><strong>클라이언트</strong> {item.client}</li>
-                                            <li><strong>디자이너</strong> {item.designer}</li>
-                                        </ul>
-                                    </div>
-                                </a>
-                            ))}
-                        </div>
-                    </section>
-                )}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
 
                 {/* 메인 포트폴리오 그리드 */}
                 <section className={styles.portfolioSection}>
@@ -247,9 +256,12 @@ export default function PortfolioPage() {
                                 <div className={styles.cardInfo}>
                                     <h3 className={styles.cardTitle}>{item.title}</h3>
                                     <ul className={styles.cardMeta}>
-                                        <li><strong>WORK</strong> {item.workType}</li>
-                                        <li><strong>클라이언트</strong> {item.client}</li>
-                                        <li><strong>디자이너</strong> {item.designer}</li>
+                                        <li>
+                                            <span className={styles.metaLabel}>WORK :</span> {item.workType}
+                                        </li>
+                                        <li>
+                                            <span className={styles.metaLabel}>클라이언트 :</span> {item.client}
+                                        </li>
                                     </ul>
                                 </div>
                             </a>
@@ -299,7 +311,7 @@ export default function PortfolioPage() {
                         끝 ››
                     </button>
                 </div>
-            </div>
-        </Layout>
+            </div >
+        </Layout >
     );
 }

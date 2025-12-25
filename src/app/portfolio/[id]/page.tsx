@@ -154,8 +154,8 @@ export default function PortfolioDetailPage() {
                                 <span className={styles.metaValue}>{portfolio.client}</span>
                             </li>
                             <li>
-                                <span className={styles.metaLabel}>○ 디자이너</span>
-                                <span className={styles.metaValue}>{portfolio.designer}</span>
+                                <span className={styles.metaLabel}>○ 클라이언트</span>
+                                <span className={styles.metaValue}>{portfolio.client}</span>
                             </li>
                         </ul>
 

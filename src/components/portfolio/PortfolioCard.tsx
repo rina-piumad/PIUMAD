@@ -53,13 +53,7 @@ export default function PortfolioCard({
                             <span className={styles.metaValue}>{client}</span>
                         </li>
                     )}
-                    {designer && (
-                        <li className={styles.metaItem}>
-                            <span className={styles.bullet}>ㅇ</span>
-                            <span className={styles.metaLabel}>디자이너</span>
-                            <span className={styles.metaValue}>{designer}</span>
-                        </li>
-                    )}
+
                 </ul>
             </div>
         </a>
