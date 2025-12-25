@@ -3,7 +3,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Layout } from '@/components/layout';
 import styles from './page.module.css';
 
@@ -163,12 +163,10 @@ export default function PortfolioPage() {
     const currentItems = regularItems.slice(startIndex, endIndex);
 
     const goToPage = (page: number) => {
-        if (page >= 1 && page <= totalPages) {
-            setCurrentPage(page);
-            if (typeof window !== 'undefined') {
-                window.scrollTo({ top: 400, behavior: 'smooth' });
-            }
-        }
+        setCurrentPage(page);
+        setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 100);
     };
 
     return (
@@ -272,6 +270,7 @@ export default function PortfolioPage() {
                 {/* 페이지네이션 */}
                 <div className={styles.pagination}>
                     <button
+                        type="button"
                         className={styles.pageButton}
                         onClick={() => goToPage(1)}
                         disabled={currentPage === 1}
@@ -279,6 +278,7 @@ export default function PortfolioPage() {
                         ‹‹ 처음
                     </button>
                     <button
+                        type="button"
                         className={styles.pageButton}
                         onClick={() => goToPage(currentPage - 1)}
                         disabled={currentPage === 1}
@@ -289,6 +289,7 @@ export default function PortfolioPage() {
                     {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                         <button
                             key={page}
+                            type="button"
                             className={`${styles.pageButton} ${currentPage === page ? styles.activePage : ''}`}
                             onClick={() => goToPage(page)}
                         >
@@ -297,6 +298,7 @@ export default function PortfolioPage() {
                     ))}
 
                     <button
+                        type="button"
                         className={styles.pageButton}
                         onClick={() => goToPage(currentPage + 1)}
                         disabled={currentPage === totalPages}
@@ -304,6 +306,7 @@ export default function PortfolioPage() {
                         다음 ›
                     </button>
                     <button
+                        type="button"
                         className={styles.pageButton}
                         onClick={() => goToPage(totalPages)}
                         disabled={currentPage === totalPages}

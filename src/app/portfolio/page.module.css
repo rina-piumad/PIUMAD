@@ -350,6 +350,8 @@
     justify-content: center;
     gap: 4px;
     margin-top: 48px;
+    position: relative;
+    z-index: 10;
 }
 
 .pageButton {
@@ -374,10 +376,13 @@
     cursor: not-allowed;
 }
 
-.pageButton.activePage {
-    background: var(--color-text);
+.activePage {
+    background-color: #000000;
+    background-color: var(--color-text);
     color: white;
+    border-color: #000000;
     border-color: var(--color-text);
+    font-weight: 700;
 }
 
 /* 반응형 */

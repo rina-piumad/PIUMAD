@@ -23,24 +23,22 @@ const navigation = [
 ];
 
 const siteInfo = {
-    phone: '1588-0000',
-    email: 'hello@pium.design',
+    phone: '010-6314-1261',
+    email: 'pium0711@naver.com',
     kakao: 'https://pf.kakao.com/_example',
     businessInfo: {
         company: '피움디자인',
-        ceo: '홍길동',
-        businessNumber: '000-00-00000',
-        address: '서울시 강남구 테헤란로 123',
+        ceo: '최성희',
+        businessNumber: '278-75-00348',
+        address: '경기도 화성시 장조4로13',
+        telecom: '2023-경기화성',
     },
     bankInfo: {
-        bank: '국민은행',
-        account: '000-000-00000',
-        holder: '피움디자인',
+        bank: '기업은행',
+        account: '079-145136-01-015',
+        holder: 'CHOI SUNG HEE',
     },
-    notices: [
-        { text: '2024년 연말 휴무 안내', date: '2024.12.20' },
-        { text: '새로운 포트폴리오 업데이트', date: '2024.12.15' },
-    ]
+    notices: []
 };
 
 export default function Layout({ children }: LayoutProps) {

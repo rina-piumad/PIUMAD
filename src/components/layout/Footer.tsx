@@ -8,6 +8,7 @@ interface BusinessInfo {
     ceo: string;
     businessNumber: string;
     address: string;
+    telecom?: string;
 }
 
 interface BankInfo {
@@ -47,14 +48,21 @@ export default function Footer({
                 <div className={styles.section}>
                     <h4 className={styles.sectionTitle}>공지사항</h4>
                     <ul className={styles.noticeList}>
-                        {notices.map((notice, index) => (
-                            <li key={index} className={styles.noticeItem}>
-                                <span className={styles.noticeText}>{notice.text}</span>
-                                <span className={styles.noticeDate}>{notice.date}</span>
+                        {notices && notices.length > 0 ? (
+                            notices.map((notice, index) => (
+                                <li key={index} className={styles.noticeItem}>
+                                    <span className={styles.noticeText}>{notice.text}</span>
+                                    <span className={styles.noticeDate}>{notice.date}</span>
+                                </li>
+                            ))
+                        ) : (
+                            <li className={styles.noticeItem}>
+                                <span className={styles.noticeText}>등록된 공지사항이 없습니다.</span>
                             </li>
-                        ))}
+                        )}
                     </ul>
                 </div>
+
 
                 {/* 고객센터 */}
                 <div className={styles.section}>
@@ -108,13 +116,13 @@ export default function Footer({
                 <div className={styles.bottomInner}>
                     {businessInfo && (
                         <div className={styles.businessInfo}>
-                            상호: {businessInfo.company} | 대표: {businessInfo.ceo} |
-                            사업자등록번호: {businessInfo.businessNumber} |
-                            주소: {businessInfo.address}
+                            {businessInfo.address} | <strong className={styles.dimmed}>대표:</strong> {businessInfo.ceo} | <strong className={styles.dimmed}>전화:</strong> {phone}<br />
+                            <strong className={styles.dimmed}>상호:</strong> {businessInfo.company} | <strong className={styles.dimmed}>사업자등록번호:</strong> {businessInfo.businessNumber} | <strong className={styles.dimmed}>통신판매업신고:</strong> {businessInfo.telecom}<br />
+                            <strong className={styles.dimmed}>E-mail:</strong> {email}
                         </div>
                     )}
                     <div className={styles.copyright}>
-                        © {currentYear} PIUM Design Agency. All rights reserved.
+                        Copyright © PIUM Design Agency. All rights reserved.
                     </div>
                 </div>
             </div>

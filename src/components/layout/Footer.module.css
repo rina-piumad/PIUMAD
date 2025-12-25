@@ -159,6 +159,11 @@
     color: var(--color-text-secondary);
 }
 
+.dimmed {
+    opacity: 0.5;
+    font-weight: 400;
+}
+
 /* 반응형 */
 @media (max-width: 1024px) {
     .footerInner {
