@@ -1,0 +1,379 @@
+/* Portfolio Detail Page Styles - 100gomidesign.com 스타일 */
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+}
+
+.loading {
+    text-align: center;
+    padding: 100px;
+    font-size: 18px;
+    color: var(--color-text-secondary);
+}
+
+/* 상단 제품 영역 */
+.productTop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+}
+
+/* 이미지 갤러리 */
+.gallery {
+    position: relative;
+}
+
+.mainImage {
+    position: relative;
+    background: #F5F5F5;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.productImage {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+}
+
+.navButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 2;
+}
+
+.navButton:first-of-type {
+    left: 16px;
+}
+
+.navButton:last-of-type {
+    right: 16px;
+}
+
+.navButton:hover {
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.imageCounter {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+/* 제품 정보 */
+.productInfo {
+    padding-top: 20px;
+}
+
+.productTitle {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 32px 0;
+    letter-spacing: -0.02em;
+}
+
+.metaList {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+}
+
+.metaList li {
+    display: flex;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 15px;
+}
+
+.metaLabel {
+    color: var(--color-text);
+    font-weight: 500;
+    min-width: 100px;
+}
+
+.metaValue {
+    color: var(--color-text-secondary);
+}
+
+/* 제작 프로세스 */
+.processSection {
+    margin-bottom: 32px;
+    padding: 20px;
+    background: #F8F8F8;
+    border-radius: 8px;
+}
+
+.processTitle {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 12px 0;
+    color: var(--color-text);
+}
+
+.processSteps {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+}
+
+.step {
+    white-space: nowrap;
+}
+
+/* 액션 버튼 */
+.actionButtons {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.cartButton {
+    flex: 1;
+    padding: 16px 24px;
+    background: white;
+    border: 2px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cartButton:hover {
+    border-color: var(--color-text);
+}
+
+.orderButton {
+    flex: 2;
+    padding: 16px 24px;
+    background: #8B5CF6;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.orderButton:hover {
+    background: #7C3AED;
+}
+
+/* 관련 포트폴리오 */
+.relatedSection {
+    margin-bottom: 60px;
+}
+
+.relatedTitle {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 24px 0;
+}
+
+.relatedGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.relatedCard {
+    text-decoration: none;
+    color: inherit;
+}
+
+.relatedImage {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: transform 0.2s ease;
+}
+
+.relatedCard:hover .relatedImage {
+    transform: scale(1.02);
+}
+
+.relatedCardTitle {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* 상세 탭 */
+.detailTabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid var(--color-border);
+    margin-bottom: 40px;
+}
+
+.tabButton {
+    padding: 16px 32px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tabButton:hover {
+    color: var(--color-text);
+}
+
+.tabButton.activeTab {
+    color: var(--color-text);
+    border-bottom-color: var(--color-text);
+}
+
+/* 탭 콘텐츠 */
+.tabContent {
+    min-height: 400px;
+    margin-bottom: 60px;
+}
+
+.infoContent h3,
+.guideContent h3,
+.chatContent h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 16px 0;
+}
+
+.infoContent p,
+.guideContent p,
+.chatContent p {
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin-bottom: 24px;
+}
+
+.guideContent ol {
+    padding-left: 20px;
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    line-height: 2;
+}
+
+.detailImageWrapper {
+    margin-top: 40px;
+}
+
+.detailImage {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 12px;
+}
+
+.kakaoButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 32px;
+    background: #FEE500;
+    border-radius: 8px;
+    color: #3C1E1E;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.kakaoButton:hover {
+    background: #F0D800;
+}
+
+/* 하단 네비게이션 */
+.bottomNav {
+    text-align: center;
+    padding-top: 40px;
+    border-top: 1px solid var(--color-border);
+}
+
+.listButton {
+    display: inline-block;
+    padding: 14px 48px;
+    background: var(--color-text);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.listButton:hover {
+    opacity: 0.9;
+}
+
+/* 반응형 */
+@media (max-width: 1024px) {
+    .productTop {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .relatedGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .container {
+        padding: 24px 16px 60px;
+    }
+
+    .productTitle {
+        font-size: 22px;
+    }
+
+    .actionButtons {
+        flex-direction: column;
+    }
+
+    .cartButton,
+    .orderButton {
+        flex: none;
+    }
+
+    .relatedGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .detailTabs {
+        overflow-x: auto;
+    }
+
+    .tabButton {
+        padding: 14px 20px;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+}

@@ -1,0 +1,91 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 200;
+    animation: fadeIn 0.2s ease;
+}
+
+.menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80%;
+    max-width: 320px;
+    height: 100%;
+    background: var(--color-bg);
+    padding: var(--space-6);
+    animation: slideIn 0.3s ease;
+}
+
+.closeButton {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    font-size: var(--text-xl);
+    cursor: pointer;
+    color: var(--color-text);
+}
+
+.nav {
+    margin-top: var(--space-16);
+}
+
+.nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav li {
+    margin-bottom: var(--space-4);
+}
+
+.nav a {
+    display: block;
+    font-size: var(--text-xl);
+    font-weight: var(--font-medium);
+    color: var(--color-text);
+    text-decoration: none;
+    padding: var(--space-2) 0;
+}
+
+.contact {
+    position: absolute;
+    bottom: var(--space-8);
+    left: var(--space-6);
+}
+
+.contact a {
+    display: block;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    margin-bottom: var(--space-2);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}

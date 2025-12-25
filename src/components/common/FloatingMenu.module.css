@@ -1,0 +1,72 @@
+.container {
+    position: fixed;
+    bottom: var(--space-6);
+    right: var(--space-6);
+    z-index: 90;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.actions.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.action {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg);
+    border-radius: 50%;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    font-size: 1.25rem;
+    transition: transform 0.2s ease;
+}
+
+.action:hover {
+    transform: scale(1.1);
+}
+
+.toggle {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.toggle:hover {
+    transform: scale(1.05);
+}
+
+.toggle.active {
+    background: var(--color-text-secondary);
+}
+
+@media (max-width: 768px) {
+    .container {
+        bottom: var(--space-4);
+        right: var(--space-4);
+    }
+}

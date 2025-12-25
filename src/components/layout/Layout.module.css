@@ -1,0 +1,11 @@
+/* Layout Styles - 전체 너비 레이아웃 */
+
+.layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    flex: 1;
+}

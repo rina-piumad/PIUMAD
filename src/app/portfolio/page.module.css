@@ -1,0 +1,353 @@
+/* Portfolio Page Styles - 100gomidesign.com 스타일 */
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+}
+
+/* 페이지 헤더 */
+.pageHeader {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.pageTitle {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+.pageSubtitle {
+    font-size: 16px;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+/* 카테고리 탭 (점 포함 스타일) */
+.categoryTabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 24px;
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.categoryTab {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 8px 4px;
+    background: none;
+    border: none;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--color-text);
+    cursor: pointer;
+    transition: color 0.2s ease;
+    white-space: nowrap;
+}
+
+.categoryTab:hover {
+    color: #666;
+}
+
+.categoryTab.activeTab {
+    font-weight: 600;
+}
+
+.dot {
+    color: #E53935;
+    font-size: 10px;
+    margin-left: 2px;
+}
+
+.searchTab {
+    color: #E53935;
+}
+
+.searchIcon {
+    font-size: 14px;
+    margin-left: 4px;
+}
+
+/* 카테고리 필터 (구 스타일 - 버튼형) */
+.categoryFilter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 48px;
+}
+
+.categoryButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    background: #F5F5F5;
+    border: none;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.categoryButton:hover {
+    background: #E8E8E8;
+}
+
+.categoryButton.active {
+    background: var(--color-text);
+    color: white;
+}
+
+.categoryCount {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+}
+
+.categoryButton.active .categoryCount {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* BEST 섹션 */
+.bestSection {
+    margin-bottom: 60px;
+}
+
+.sectionTitle {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 24px 0;
+    padding-left: 8px;
+    border-left: 4px solid var(--color-text);
+}
+
+.bestGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.bestCard {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.bestImageWrapper {
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.bestBadge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #FF6B35;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 4px;
+    z-index: 2;
+}
+
+/* 포트폴리오 섹션 */
+.portfolioSection {
+    margin-bottom: 48px;
+}
+
+.sortBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.itemCount {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+}
+
+.sortSelect {
+    padding: 8px 32px 8px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-size: 14px;
+    background: white;
+    cursor: pointer;
+}
+
+.portfolioGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.portfolioCard {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.portfolioCard:hover {
+    transform: translateY(-4px);
+}
+
+.imageWrapper {
+    position: relative;
+    margin-bottom: 16px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.cardImage {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.portfolioCard:hover .cardImage,
+.bestCard:hover .cardImage {
+    transform: scale(1.03);
+}
+
+.newBadge {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background: #8B5CF6;
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+/* 카드 정보 */
+.cardInfo {
+    padding: 0 4px;
+}
+
+.cardTitle {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 12px 0;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+}
+
+.cardMeta {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cardMeta li {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    margin-bottom: 4px;
+    display: flex;
+    gap: 8px;
+}
+
+.cardMeta strong {
+    color: var(--color-text);
+    font-weight: 500;
+    min-width: 60px;
+}
+
+/* 페이지네이션 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 48px;
+}
+
+.pageButton {
+    min-width: 36px;
+    height: 36px;
+    padding: 0 12px;
+    border: 1px solid var(--color-border);
+    background: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pageButton:hover:not(:disabled) {
+    background: var(--color-text);
+    color: white;
+    border-color: var(--color-text);
+}
+
+.pageButton:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.pageButton.activePage {
+    background: var(--color-text);
+    color: white;
+    border-color: var(--color-text);
+}
+
+/* 반응형 */
+@media (max-width: 1024px) {
+
+    .bestGrid,
+    .portfolioGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .categoryTabs {
+        gap: 4px 16px;
+    }
+
+    .categoryTab {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 640px) {
+    .container {
+        padding: 24px 16px 60px;
+    }
+
+    .pageTitle {
+        font-size: 24px;
+    }
+
+    .categoryTabs {
+        gap: 4px 12px;
+    }
+
+    .categoryTab {
+        font-size: 13px;
+        padding: 6px 2px;
+    }
+
+    .bestGrid,
+    .portfolioGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .pagination {
+        flex-wrap: wrap;
+    }
+}

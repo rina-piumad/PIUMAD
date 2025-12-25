@@ -1,0 +1,165 @@
+/* HeroSlider Styles - 카드형 슬라이더 (100gomidesign.com 스타일) */
+
+.sliderSection {
+    background: #F4F4F4;
+    padding: 24px;
+}
+
+.sliderContainer {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.slidesWrapper {
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slide {
+    min-width: 100%;
+    flex-shrink: 0;
+}
+
+.slideLink {
+    display: block;
+    text-decoration: none;
+}
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 6;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.slideImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.slideLink:hover .slideImage {
+    transform: scale(1.02);
+}
+
+/* 뱃지 */
+.badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: #DC3545;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+/* Navigation */
+.prevButton,
+.nextButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    color: var(--color-text);
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.prevButton {
+    left: 16px;
+}
+
+.nextButton {
+    right: 16px;
+}
+
+.prevButton:hover,
+.nextButton:hover {
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Dots */
+.dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-border);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dot.activeDot {
+    background: var(--color-text);
+    transform: scale(1.2);
+}
+
+/* 반응형 */
+@media (max-width: 1024px) {
+    .imageWrapper {
+        aspect-ratio: 16 / 7;
+    }
+}
+
+@media (max-width: 768px) {
+    .sliderSection {
+        padding: 16px;
+    }
+
+    .imageWrapper {
+        aspect-ratio: 16 / 9;
+        border-radius: 12px;
+    }
+
+    .slidesWrapper {
+        border-radius: 12px;
+    }
+
+    .prevButton,
+    .nextButton {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+
+    .prevButton {
+        left: 8px;
+    }
+
+    .nextButton {
+        right: 8px;
+    }
+
+    .badge {
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+}

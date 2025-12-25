@@ -1,0 +1,513 @@
+/* About Page Styles */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+}
+
+.pageHeader {
+    text-align: center;
+    padding: 60px 0 80px;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 60px;
+}
+
+.logoArea {
+    margin-bottom: 24px;
+}
+
+.logoImage {
+    width: 120px;
+    height: auto;
+}
+
+.pageTitle {
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0 0 16px 0;
+    letter-spacing: 0.05em;
+}
+
+.pageSubtitle {
+    font-size: 18px;
+    color: var(--color-text-secondary);
+    margin: 0 0 16px 0;
+}
+
+.slogan {
+    font-size: 20px;
+    color: #8B5CF6;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* 섹션 타이틀 */
+.sectionTitle {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 32px 0;
+    text-align: center;
+}
+
+/* 회사 연혁 섹션 */
+.historySection {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.timelineItem {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.timelineYear {
+    flex-shrink: 0;
+    width: 100px;
+    padding: 8px 16px;
+    background: #8B5CF6;
+    color: white;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.timelineContent {
+    flex: 1;
+    padding: 4px 0;
+}
+
+.timelineContent h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+}
+
+.timelineContent p {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* 주요 클라이언트 섹션 */
+.clientsSection {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.clientsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.clientCard {
+    text-align: center;
+    padding: 32px 24px;
+    background: linear-gradient(135deg, #F8F7FF 0%, #F0EEFF 100%);
+    border-radius: 16px;
+    border: 1px solid #E8E4FF;
+}
+
+.clientIcon {
+    font-size: 48px;
+    display: block;
+    margin-bottom: 16px;
+}
+
+.clientCard h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    color: #333;
+}
+
+.clientCard p {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+/* 소개 섹션 */
+.introSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    padding: 60px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.introContent {
+    padding-right: 20px;
+}
+
+.introContent .sectionTitle {
+    text-align: left;
+}
+
+.introText {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin: 0 0 20px 0;
+}
+
+.introText strong {
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+.introImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.statsCard {
+    display: flex;
+    gap: 32px;
+    padding: 40px;
+    background: linear-gradient(135deg, #8B5CF6 0%, #A855F7 100%);
+    border-radius: 20px;
+    color: white;
+}
+
+.statItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.statNumber {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.statLabel {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.heroImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 핵심 가치 섹션 */
+.valuesSection {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.valuesGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.valueCard {
+    text-align: center;
+    padding: 32px 20px;
+    background: #FAFAFA;
+    border-radius: 16px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.valueCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.valueIcon {
+    font-size: 40px;
+    display: block;
+    margin-bottom: 16px;
+}
+
+.valueCard h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 12px 0;
+}
+
+.valueCard p {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* 프로세스 섹션 */
+.processSection {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.processSteps {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 16px;
+}
+
+.processStep {
+    flex: 1;
+    max-width: 200px;
+    text-align: center;
+    padding: 24px 16px;
+}
+
+.stepNumber {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    background: #8B5CF6;
+    color: white;
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.processStep h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 12px 0;
+}
+
+.processStep p {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.processArrow {
+    font-size: 24px;
+    color: #CCC;
+    padding-top: 36px;
+}
+
+/* 서비스 분야 섹션 */
+.servicesSection {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.servicesGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+}
+
+.serviceItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 24px 16px;
+    background: #FAFAFA;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    transition: background 0.2s ease;
+}
+
+.serviceItem:hover {
+    background: #F0F0F0;
+}
+
+.serviceIcon {
+    font-size: 32px;
+}
+
+/* 연락처 섹션 */
+.contactSection {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.contactInfo {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.contactItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px;
+    background: #FAFAFA;
+    border-radius: 12px;
+}
+
+.contactIcon {
+    font-size: 28px;
+}
+
+.contactItem h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+}
+
+.contactItem p,
+.contactItem a {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin: 0;
+    text-decoration: none;
+}
+
+.contactItem a:hover {
+    color: #8B5CF6;
+}
+
+/* CTA 섹션 */
+.ctaSection {
+    text-align: center;
+    padding: 80px 40px;
+    background: linear-gradient(135deg, #8B5CF6 0%, #A855F7 100%);
+    border-radius: 24px;
+    margin-top: 60px;
+    color: white;
+}
+
+.ctaSection h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+}
+
+.ctaSection p {
+    font-size: 16px;
+    opacity: 0.9;
+    margin: 0 0 32px 0;
+}
+
+.ctaButtons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.ctaButtonPrimary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 32px;
+    background: #FEE500;
+    color: #3C1E1E;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.ctaButtonPrimary:hover {
+    transform: scale(1.05);
+}
+
+.ctaButtonSecondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 32px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.ctaButtonSecondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* 반응형 */
+@media (max-width: 1024px) {
+    .valuesGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .processSteps {
+        flex-wrap: wrap;
+    }
+
+    .processArrow {
+        display: none;
+    }
+
+    .processStep {
+        flex: 0 0 calc(50% - 8px);
+        max-width: none;
+    }
+
+    .servicesGrid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .contactInfo {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 24px 16px 60px;
+    }
+
+    .pageHeader {
+        padding: 40px 0 60px;
+    }
+
+    .pageTitle {
+        font-size: 32px;
+    }
+
+    .introSection {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .introContent {
+        padding-right: 0;
+    }
+
+    .valuesGrid,
+    .contactInfo {
+        grid-template-columns: 1fr;
+    }
+
+    .processStep {
+        flex: 0 0 100%;
+    }
+
+    .servicesGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ctaButtons {
+        flex-direction: column;
+    }
+}

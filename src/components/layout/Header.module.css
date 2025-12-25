@@ -1,0 +1,140 @@
+/* Header Styles - 100gomidesign.com 스타일 */
+
+.headerWrapper {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #FFFFFF;
+}
+
+/* 공지사항 바 */
+.announcementBar {
+    background: #FFF3CD;
+    padding: 8px 16px;
+    text-align: center;
+}
+
+.announcementText {
+    font-size: 13px;
+    color: #856404;
+    font-weight: 700;
+}
+
+/* 메인 헤더 */
+.header {
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.headerInner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* 로고 */
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-text);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    height: 36px;
+    width: auto;
+}
+
+/* 네비게이션 */
+.nav {
+    display: flex;
+    align-items: center;
+}
+
+.navList {
+    display: flex;
+    list-style: none;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+}
+
+.navLink {
+    display: block;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    letter-spacing: 0.02em;
+}
+
+.navLink:hover {
+    color: var(--color-text-secondary);
+}
+
+/* 모바일 메뉴 버튼 */
+.menuButton {
+    display: none;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menuIcon {
+    position: relative;
+    width: 24px;
+    height: 2px;
+    background: var(--color-text);
+}
+
+.menuIcon::before,
+.menuIcon::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background: var(--color-text);
+    left: 0;
+}
+
+.menuIcon::before {
+    top: -8px;
+}
+
+.menuIcon::after {
+    top: 8px;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .nav {
+        display: none;
+    }
+
+    .menuButton {
+        display: flex;
+    }
+
+    .headerInner {
+        height: 60px;
+        padding: 0 16px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+}
