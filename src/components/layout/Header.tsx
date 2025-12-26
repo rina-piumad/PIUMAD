@@ -38,7 +38,7 @@ export default function Header({
                 <div className={styles.headerInner}>
                     {/* Logo */}
                     <a href="/" className={styles.logo}>
-                        <img src="/image/pium_log.jpg" alt="PIUM Logo" />
+                        <img src="/image/pium-logo.png" alt="피움디자인 PIUM DESIGN" />
                         <span>PIUM</span>
                     </a>
 

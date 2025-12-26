@@ -26,78 +26,79 @@ const heroSlides = [
     },
 ];
 
-// 카테고리 아이콘 데이터
+// 카테고리 아이콘 데이터 (포트폴리오 메뉴와 동일)
 const categories = [
-    { id: 'branding', label: '브랜딩', icon: '🎨' },
-    { id: 'logo', label: '로고', icon: '✨' },
-    { id: 'leaflet', label: '리플렛', icon: '📄' },
+    { id: 'sign', label: 'SIGN 디자인', icon: '🪧' },
+    { id: 'banner', label: '현수막', icon: '🎌' },
     { id: 'catalog', label: '카탈로그', icon: '📖' },
-    { id: 'package', label: '패키지', icon: '📦' },
+    { id: 'leaflet', label: '리플렛', icon: '📄' },
+    { id: 'flyer', label: '전단지 • 포스터', icon: '📃' },
+    { id: 'cardnews', label: '카드뉴스', icon: '📱' },
     { id: 'namecard', label: '명함', icon: '💳' },
-    { id: 'signage', label: '간판', icon: '🏪' },
-    { id: 'banner', label: '배너', icon: '🖼️' },
+    { id: 'plaque', label: '상패', icon: '🏆' },
+    { id: 'goods', label: '홍보 물품', icon: '🛍️' },
 ];
 
-// 포트폴리오 데이터
+// 포트폴리오 데이터 (실제 이미지 사용)
 const portfolioItems = [
     {
         id: '1',
-        title: '카페 브랜드 리뉴얼',
-        category: '브랜딩',
-        thumbnail: 'https://images.unsplash.com/photo-1634942537034-2531766767d1?w=600&q=80',
-        slug: 'cafe-brand-renewal',
-        workType: '브랜드 리뉴얼',
-        client: '스타벅스 코리아',
+        title: '클래식 명함 디자인',
+        category: '명함',
+        thumbnail: '/portfolio/명함/무제-4-04.jpg',
+        slug: 'namecard-1',
+        workType: '명함 디자인',
+        client: '클라이언트',
         designer: 'PIUM',
     },
     {
         id: '2',
-        title: '화장품 패키지 디자인',
-        category: '패키지',
-        thumbnail: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&q=80',
-        slug: 'cosmetic-package',
-        workType: '패키지 디자인',
-        client: '아모레퍼시픽',
+        title: 'AI 명함 디자인',
+        category: '명함',
+        thumbnail: '/portfolio/명함/Gemini_Generated_Image_3zrs5g3zrs5g3zrs.png',
+        slug: 'namecard-2',
+        workType: '명함 디자인',
+        client: 'AI 프로젝트',
         designer: 'PIUM',
     },
     {
         id: '3',
-        title: '테크 스타트업 로고',
-        category: '로고',
-        thumbnail: 'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&q=80',
-        slug: 'tech-startup-logo',
-        workType: '로고 제작',
-        client: '토스',
+        title: '리플렛 디자인',
+        category: '리플렛',
+        thumbnail: '/portfolio/리플렛/Gemini_Generated_Image_3t0myp3t0myp3t0m.png',
+        slug: 'leaflet-1',
+        workType: '리플렛 디자인',
+        client: '클라이언트',
         designer: 'PIUM',
     },
     {
         id: '4',
-        title: '호텔 브랜드 아이덴티티',
-        category: '브랜딩',
-        thumbnail: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?w=600&q=80',
-        slug: 'hotel-brand-identity',
-        workType: '브랜드 아이덴티티',
-        client: '신라호텔',
+        title: '전단지 디자인',
+        category: '전단지',
+        thumbnail: '/portfolio/전단지/스크린샷 2025-12-24 212137.png',
+        slug: 'flyer-1',
+        workType: '전단지 디자인',
+        client: '클라이언트',
         designer: 'PIUM',
     },
     {
         id: '5',
-        title: '패션 브랜드 리플렛',
-        category: '리플렛',
-        thumbnail: 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=600&q=80',
-        slug: 'fashion-brand-leaflet',
-        workType: '리플렛 디자인',
-        client: '무신사',
+        title: '프리미엄 쇼핑백',
+        category: '홍보 물품',
+        thumbnail: '/portfolio/쇼핑백/Gemini_Generated_Image_3rjg3b3rjg3b3rjg.png',
+        slug: 'goods-1',
+        workType: '홍보물품 디자인',
+        client: '기업 클라이언트',
         designer: 'PIUM',
     },
     {
         id: '6',
-        title: '식품 회사 카탈로그',
-        category: '카탈로그',
-        thumbnail: 'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&q=80',
-        slug: 'food-company-catalog',
-        workType: '카탈로그 제작',
-        client: 'CJ제일제당',
+        title: '모던 쇼핑백',
+        category: '홍보 물품',
+        thumbnail: '/portfolio/쇼핑백/Gemini_Generated_Image_6bmctp6bmctp6bmc.png',
+        slug: 'goods-2',
+        workType: '홍보물품 디자인',
+        client: '브랜드 클라이언트',
         designer: 'PIUM',
     },
 ];
@@ -111,25 +112,30 @@ export default function Home() {
             {/* 카테고리 아이콘 */}
             <CategoryIcons categories={categories} />
 
-            {/* 포트폴리오 섹션 */}
+            {/* 새롭게 등록된 포트폴리오 */}
             <section style={{
                 padding: '48px 24px',
                 maxWidth: '1400px',
                 margin: '0 auto'
             }}>
-                <h2 style={{
-                    fontSize: '1.5rem',
-                    fontWeight: 700,
-                    marginBottom: '24px',
-                    textAlign: 'center',
-                    letterSpacing: '-0.02em'
-                }}>
-                    NEW PORTFOLIO
-                </h2>
+                <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+                    <h2 style={{
+                        fontSize: '32px',
+                        fontWeight: 700,
+                        marginBottom: '12px',
+                        letterSpacing: '-0.02em',
+                        color: '#333'
+                    }}>
+                        NEW PORTFOLIO
+                    </h2>
+                    <p style={{ fontSize: '16px', color: '#888', margin: 0 }}>
+                        새롭게 등록된 포트폴리오
+                    </p>
+                </div>
                 <PortfolioGrid
                     items={portfolioItems}
                     columns={3}
-                    showFilter={true}
+                    showFilter={false}
                 />
             </section>
 
