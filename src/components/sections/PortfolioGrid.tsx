@@ -12,7 +12,7 @@ interface PortfolioItem {
     title: string;
     category: string;
     thumbnail: string;
-    slug: string;
+    slug?: string;
     client?: string;
     designer?: string;
     workType?: string;
@@ -34,7 +34,8 @@ export default function PortfolioGrid({
     const [activeCategory, setActiveCategory] = useState<string>('전체');
 
     // 카테고리 목록 생성 (전체 + 고유 카테고리)
-    const allCategories = ['전체', ...new Set(categories.length > 0 ? categories : items.map(item => item.category))];
+    const uniqueCategories = categories.length > 0 ? categories : items.map(item => item.category);
+    const allCategories = ['전체', ...Array.from(new Set(uniqueCategories))];
 
     // 필터된 아이템
     const filteredItems = activeCategory === '전체'
@@ -68,6 +69,7 @@ export default function PortfolioGrid({
                 {filteredItems.map((item) => (
                     <PortfolioCard
                         key={item.id}
+                        id={item.id}
                         title={item.title}
                         category={item.category}
                         thumbnail={item.thumbnail}

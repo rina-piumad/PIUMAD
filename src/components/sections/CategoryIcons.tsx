@@ -3,6 +3,7 @@
 
 'use client';
 
+import Link from 'next/link';
 import styles from './CategoryIcons.module.css';
 
 interface Category {
@@ -29,7 +30,7 @@ export default function CategoryIcons({ categories, onCategoryClick }: CategoryI
             <div className={styles.container}>
                 <div className={styles.grid}>
                     {categories.map((category) => (
-                        <a
+                        <Link
                             key={category.id}
                             href={category.href || '#'}
                             className={styles.categoryItem}
@@ -44,7 +45,7 @@ export default function CategoryIcons({ categories, onCategoryClick }: CategoryI
                                 <span className={styles.icon}>{category.icon}</span>
                             </div>
                             <span className={styles.label}>{category.label}</span>
-                        </a>
+                        </Link>
                     ))}
                 </div>
             </div>

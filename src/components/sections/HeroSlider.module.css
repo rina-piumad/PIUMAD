@@ -7,11 +7,13 @@
 
 .sliderContainer {
     position: relative;
-    max-width: 1400px;
+    max-width: 100%;
     margin: 0 auto;
+    padding: 0 60px;
 }
 
 .slidesWrapper {
+    position: relative;
     overflow: hidden;
     border-radius: 16px;
 }
@@ -34,7 +36,9 @@
 .imageWrapper {
     position: relative;
     width: 100%;
-    aspect-ratio: 16 / 6;
+    max-height: 500px;
+    aspect-ratio: 16 / 9;
+    background: #F4F4F4;
     overflow: hidden;
     border-radius: 16px;
 }
@@ -42,8 +46,9 @@
 .slideImage {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
+    object-fit: contain;
+    display: block;
+    border-radius: 16px;
 }
 
 .slideLink:hover .slideImage {
@@ -74,7 +79,7 @@
     background: rgba(255, 255, 255, 0.9);
     border: none;
     border-radius: 50%;
-    color: var(--color-text);
+    color: #333;
     font-size: 24px;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -111,32 +116,25 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: var(--color-border);
+    background: #ccc;
     border: none;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
 .dot.activeDot {
-    background: var(--color-text);
+    background: #333;
     transform: scale(1.2);
 }
 
 /* 반응형 */
-@media (max-width: 1024px) {
-    .imageWrapper {
-        aspect-ratio: 16 / 7;
-    }
-}
-
 @media (max-width: 768px) {
     .sliderSection {
         padding: 16px;
     }
 
-    .imageWrapper {
-        aspect-ratio: 16 / 9;
-        border-radius: 12px;
+    .sliderContainer {
+        padding: 0;
     }
 
     .slidesWrapper {

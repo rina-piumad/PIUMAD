@@ -4,104 +4,68 @@
 import { Layout } from '@/components/layout';
 import { HeroSlider, CategoryIcons, PortfolioGrid } from '@/components/sections';
 import { FloatingMenu, ScrollToTop } from '@/components/common';
+import { getLatestPortfolioItems } from '@/data/portfolioData';
 
 // 히어로 슬라이더 데이터
 const heroSlides = [
     {
         id: '1',
-        title: '브랜딩 디자인',
-        image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1920&q=80',
+        title: 'SIGN 디자인',
+        image: '/main-slides/sign-01.jpg',
         badge: 'Since 2018',
     },
     {
         id: '2',
-        title: '로고 디자인',
-        image: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=1920&q=80',
-        badge: 'NEW',
+        title: 'SIGN 디자인',
+        image: '/main-slides/sign-02.jpg',
     },
     {
         id: '3',
-        title: '패키지 디자인',
-        image: 'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=1920&q=80',
+        title: 'SIGN 디자인',
+        image: '/main-slides/sign-03.jpg',
+    },
+    {
+        id: '4',
+        title: 'SIGN 디자인',
+        image: '/main-slides/sign-04.jpg',
     },
 ];
 
 // 카테고리 아이콘 데이터 (포트폴리오 메뉴와 동일)
 const categories = [
-    { id: 'sign', label: 'SIGN 디자인', icon: '🪧' },
-    { id: 'banner', label: '현수막', icon: '🎌' },
-    { id: 'catalog', label: '카탈로그', icon: '📖' },
-    { id: 'leaflet', label: '리플렛', icon: '📄' },
-    { id: 'flyer', label: '전단지 • 포스터', icon: '📃' },
-    { id: 'cardnews', label: '카드뉴스', icon: '📱' },
-    { id: 'namecard', label: '명함', icon: '💳' },
-    { id: 'plaque', label: '상패', icon: '🏆' },
-    { id: 'goods', label: '홍보 물품', icon: '🛍️' },
+    { id: 'logo', label: 'LOGO', icon: '🎨', href: '/portfolio?category=logo' },
+    { id: 'sign', label: 'SIGN 디자인', icon: '🪧', href: '/portfolio?category=sign' },
+    { id: 'banner', label: '현수막', icon: '🎌', href: '/portfolio?category=banner' },
+    { id: 'catalog', label: '카탈로그 • 책자', icon: '📖', href: '/portfolio?category=catalog' },
+    { id: 'leaflet', label: '리플렛', icon: '📄', href: '/portfolio?category=leaflet' },
+    { id: 'flyer', label: '전단지 • 포스터', icon: '📃', href: '/portfolio?category=flyer' },
+    { id: 'cardnews', label: '카드뉴스 • SNS', icon: '📱', href: '/portfolio?category=cardnews' },
+    { id: 'namecard', label: '명함', icon: '💳', href: '/portfolio?category=namecard' },
+    { id: 'plaque', label: '상패', icon: '🏆', href: '/portfolio?category=plaque' },
+    { id: 'goods', label: '홍보 물품', icon: '🛍️', href: '/portfolio?category=goods' },
 ];
 
-// 포트폴리오 데이터 (실제 이미지 사용)
-const portfolioItems = [
-    {
-        id: '1',
-        title: '클래식 명함 디자인',
-        category: '명함',
-        thumbnail: '/portfolio/명함/무제-4-04.jpg',
-        slug: 'namecard-1',
-        workType: '명함 디자인',
-        client: '클라이언트',
-        designer: 'PIUM',
-    },
-    {
-        id: '2',
-        title: 'AI 명함 디자인',
-        category: '명함',
-        thumbnail: '/portfolio/명함/Gemini_Generated_Image_3zrs5g3zrs5g3zrs.png',
-        slug: 'namecard-2',
-        workType: '명함 디자인',
-        client: 'AI 프로젝트',
-        designer: 'PIUM',
-    },
-    {
-        id: '3',
-        title: '리플렛 디자인',
-        category: '리플렛',
-        thumbnail: '/portfolio/리플렛/Gemini_Generated_Image_3t0myp3t0myp3t0m.png',
-        slug: 'leaflet-1',
-        workType: '리플렛 디자인',
-        client: '클라이언트',
-        designer: 'PIUM',
-    },
-    {
-        id: '4',
-        title: '전단지 디자인',
-        category: '전단지',
-        thumbnail: '/portfolio/전단지/스크린샷 2025-12-24 212137.png',
-        slug: 'flyer-1',
-        workType: '전단지 디자인',
-        client: '클라이언트',
-        designer: 'PIUM',
-    },
-    {
-        id: '5',
-        title: '프리미엄 쇼핑백',
-        category: '홍보 물품',
-        thumbnail: '/portfolio/쇼핑백/Gemini_Generated_Image_3rjg3b3rjg3b3rjg.png',
-        slug: 'goods-1',
-        workType: '홍보물품 디자인',
-        client: '기업 클라이언트',
-        designer: 'PIUM',
-    },
-    {
-        id: '6',
-        title: '모던 쇼핑백',
-        category: '홍보 물품',
-        thumbnail: '/portfolio/쇼핑백/Gemini_Generated_Image_6bmctp6bmctp6bmc.png',
-        slug: 'goods-2',
-        workType: '홍보물품 디자인',
-        client: '브랜드 클라이언트',
-        designer: 'PIUM',
-    },
-];
+// 최신 포트폴리오 6개 가져오기
+// 카테고리 ID를 한글 이름으로 매핑
+const categoryNameMap: { [key: string]: string } = {
+    'logo': 'LOGO',
+    'namecard': '명함',
+    'goods': '홍보 물품',
+    'flyer': '전단지',
+    'leaflet': '리플렛',
+    'cardnews': '카드뉴스 • SNS',
+    'catalog': '카탈로그 • 책자',
+    'sign': 'SIGN 디자인',
+    'banner': '현수막',
+    'plaque': '상패',
+};
+
+const latestItems = getLatestPortfolioItems(6);
+const portfolioItems = latestItems.map(item => ({
+    ...item,
+    category: categoryNameMap[item.category] || item.category,
+}));
+
 
 export default function Home() {
     return (

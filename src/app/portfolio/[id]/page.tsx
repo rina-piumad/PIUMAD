@@ -7,97 +7,7 @@ import { useState } from 'react';
 import { useParams } from 'next/navigation';
 import { Layout } from '@/components/layout';
 import styles from './page.module.css';
-
-// 포트폴리오 데이터 (추후 실제 API로 대체)
-const portfolioData: Record<string, {
-    id: string;
-    title: string;
-    images: string[];
-    workType: string;
-    client: string;
-    designer: string;
-    description: string;
-    processSteps: string[];
-}> = {
-    '1': {
-        id: '1',
-        title: '프리미엄 명함 디자인',
-        images: ['/portfolio/namecard/무제-4-01.jpg'],
-        workType: '명함 디자인',
-        client: '기업 클라이언트',
-        designer: 'PIUM',
-        description: '고급스러운 느낌의 프리미엄 명함 디자인입니다. 심플하면서도 세련된 디자인으로 비즈니스에 신뢰감을 더해드립니다.',
-        processSteps: ['디자인 상담', '시안 제작', '수정 작업', '최종 확인', '인쇄 진행'],
-    },
-    '2': {
-        id: '2',
-        title: '미니멀 명함 디자인',
-        images: ['/portfolio/namecard/무제-4-02.jpg'],
-        workType: '명함 디자인',
-        client: '스타트업',
-        designer: 'PIUM',
-        description: '미니멀한 디자인으로 깔끔한 인상을 주는 명함입니다.',
-        processSteps: ['디자인 상담', '시안 제작', '수정 작업', '최종 확인', '인쇄 진행'],
-    },
-    '3': {
-        id: '3',
-        title: '모던 명함 디자인',
-        images: ['/portfolio/namecard/무제-4-03.jpg'],
-        workType: '명함 디자인',
-        client: '프리랜서',
-        designer: 'PIUM',
-        description: '모던하고 트렌디한 디자인의 명함입니다.',
-        processSteps: ['디자인 상담', '시안 제작', '수정 작업', '최종 확인', '인쇄 진행'],
-    },
-    '4': {
-        id: '4',
-        title: '클래식 명함 디자인',
-        images: ['/portfolio/namecard/무제-4-04.jpg'],
-        workType: '명함 디자인',
-        client: '법률사무소',
-        designer: 'PIUM',
-        description: '클래식하고 격조있는 디자인의 명함입니다.',
-        processSteps: ['디자인 상담', '시안 제작', '수정 작업', '최종 확인', '인쇄 진행'],
-    },
-    '5': {
-        id: '5',
-        title: '세련된 명함 디자인',
-        images: ['/portfolio/namecard/무제-4-05.jpg'],
-        workType: '명함 디자인',
-        client: '건축사무소',
-        designer: 'PIUM',
-        description: '세련되고 전문적인 느낌의 명함입니다.',
-        processSteps: ['디자인 상담', '시안 제작', '수정 작업', '최종 확인', '인쇄 진행'],
-    },
-    '6': {
-        id: '6',
-        title: '심플 명함 디자인',
-        images: ['/portfolio/namecard/무제-4-06.jpg'],
-        workType: '명함 디자인',
-        client: '컨설팅',
-        designer: 'PIUM',
-        description: '심플하면서도 인상적인 명함 디자인입니다.',
-        processSteps: ['디자인 상담', '시안 제작', '수정 작업', '최종 확인', '인쇄 진행'],
-    },
-    '7': {
-        id: '7',
-        title: '엘레강스 명함 디자인',
-        images: ['/portfolio/namecard/무제-4-07.jpg'],
-        workType: '명함 디자인',
-        client: '웨딩플래너',
-        designer: 'PIUM',
-        description: '우아하고 여성스러운 느낌의 명함입니다.',
-        processSteps: ['디자인 상담', '시안 제작', '수정 작업', '최종 확인', '인쇄 진행'],
-    },
-};
-
-// 관련 포트폴리오
-const relatedItems = [
-    { id: '2', title: '미니멀 명함 디자인', thumbnail: '/portfolio/namecard/무제-4-02.jpg' },
-    { id: '3', title: '모던 명함 디자인', thumbnail: '/portfolio/namecard/무제-4-03.jpg' },
-    { id: '4', title: '클래식 명함 디자인', thumbnail: '/portfolio/namecard/무제-4-04.jpg' },
-    { id: '5', title: '세련된 명함 디자인', thumbnail: '/portfolio/namecard/무제-4-05.jpg' },
-];
+import { allPortfolioItems } from '@/data/portfolioData';
 
 export default function PortfolioDetailPage() {
     const params = useParams();
@@ -105,7 +15,22 @@ export default function PortfolioDetailPage() {
     const [activeTab, setActiveTab] = useState('info');
 
     const id = params.id as string;
-    const portfolio = portfolioData[id] || portfolioData['1'];
+    
+    // 가져온 공통 데이터에서 아이디로 해당 항목 찾기
+    const foundItem = allPortfolioItems.find(item => item.id === id) || allPortfolioItems[0];
+    
+    // page.tsx에서 사용하던 형태(images 배열, 상세설명 등)로 데이터 매핑
+    const portfolio = {
+        ...foundItem,
+        images: foundItem.images || [foundItem.thumbnail],
+        description: '고급스러운 느낌의 프리미엄 디자인입니다. 심플하면서도 세련된 디자인으로 비즈니스에 신뢰감을 더해드립니다.',
+        processSteps: ['디자인 상담', '시안 제작', '수정 작업', '최종 확인', '인쇄 진행']
+    };
+
+    // 관련된 항목들을 카테고리가 같은 다른 항목들로 동적 생성
+    const relatedItems = allPortfolioItems
+        .filter(item => item.id !== id && item.category === foundItem.category)
+        .slice(0, 4);
 
     const nextImage = () => {
         setCurrentImageIndex((prev) =>
@@ -221,7 +146,7 @@ export default function PortfolioDetailPage() {
                             <p>{portfolio.description}</p>
                             <div className={styles.detailImageWrapper}>
                                 <img
-                                    src={portfolio.images[0]}
+                                    src={portfolio.detailImage || portfolio.images[0]}
                                     alt={portfolio.title}
                                     className={styles.detailImage}
                                 />
@@ -231,12 +156,21 @@ export default function PortfolioDetailPage() {
                     {activeTab === 'guide' && (
                         <div className={styles.guideContent}>
                             <h3>제작 안내</h3>
-                            <p>명함 제작 과정을 안내해드립니다.</p>
+                            {/* <p>명함 제작 과정을 안내해드립니다.</p>
                             <ol>
                                 {portfolio.processSteps.map((step, index) => (
                                     <li key={index}>{step}</li>
                                 ))}
-                            </ol>
+                            </ol> */}
+                            {portfolio.guideImage && (
+                                <div className={styles.detailImageWrapper} style={{ marginTop: '2rem' }}>
+                                    <img
+                                        src={portfolio.guideImage}
+                                        alt="제작 안내"
+                                        className={styles.detailImage}
+                                    />
+                                </div>
+                            )}
                         </div>
                     )}
                     {activeTab === 'chat' && (

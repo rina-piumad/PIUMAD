@@ -66,36 +66,19 @@ export default function HeroSlider({
                                             src={slide.image}
                                             alt={slide.title}
                                             className={styles.slideImage}
+                                            loading="eager"
+                                            onError={(e) => {
+                                                console.error('Image failed to load:', slide.image);
+                                                (e.target as HTMLImageElement).style.background = 'red';
+                                            }}
                                         />
-                                        {slide.badge && (
-                                            <span className={styles.badge}>{slide.badge}</span>
-                                        )}
+
                                     </div>
                                 </a>
                             </div>
                         ))}
                     </div>
                 </div>
-
-                {/* Navigation Arrows */}
-                {slides.length > 1 && (
-                    <>
-                        <button
-                            className={styles.prevButton}
-                            onClick={goToPrev}
-                            aria-label="이전"
-                        >
-                            ‹
-                        </button>
-                        <button
-                            className={styles.nextButton}
-                            onClick={goToNext}
-                            aria-label="다음"
-                        >
-                            ›
-                        </button>
-                    </>
-                )}
             </div>
 
             {/* Dots */}

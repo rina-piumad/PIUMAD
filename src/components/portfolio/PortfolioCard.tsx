@@ -4,10 +4,11 @@
 import styles from './PortfolioCard.module.css';
 
 interface PortfolioCardProps {
+    id?: string;
     title: string;
     category: string;
     thumbnail: string;
-    slug: string;
+    slug?: string;
     client?: string;
     designer?: string;
     workType?: string;
@@ -15,6 +16,7 @@ interface PortfolioCardProps {
 }
 
 export default function PortfolioCard({
+    id,
     title,
     category,
     thumbnail,
@@ -22,10 +24,11 @@ export default function PortfolioCard({
     client,
     designer,
     workType,
-    aspectRatio = '4/3',
+    aspectRatio = '1/1',
 }: PortfolioCardProps) {
+    const linkSlug = slug || id || '';
     return (
-        <a href={`/portfolio/${slug}`} className={styles.card}>
+        <a href={`/portfolio/${linkSlug}`} className={styles.card}>
             <div className={styles.imageWrapper} style={{ aspectRatio }}>
                 <img src={thumbnail} alt={title} className={styles.image} />
             </div>

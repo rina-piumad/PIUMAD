@@ -3,9 +3,77 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 import { Layout } from '@/components/layout';
 import styles from './page.module.css';
+import { allPortfolioItems as sharedPortfolioItems, PortfolioItem } from '@/data/portfolioData';
+
+// 카탈로그 카드 컴포넌트 (미니 슬라이더 포함)
+interface CatalogItem {
+    id: string;
+    title: string;
+    thumbnail: string;
+    images?: string[];
+    workType: string;
+    client: string;
+    designer: string;
+    isBest: boolean;
+    isNew: boolean;
+    category: string;
+    subCategory?: string;
+}
+
+function CatalogCard({ item }: { item: CatalogItem }) {
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const images = item.images || [item.thumbnail];
+
+    // 자동 슬라이드 (2초 간격)
+    useEffect(() => {
+        if (images.length <= 1) return;
+
+        const timer = setInterval(() => {
+            setCurrentImageIndex((prev) => (prev + 1) % images.length);
+        }, 2000);
+
+        return () => clearInterval(timer);
+    }, [images.length]);
+
+    return (
+        <Link href={`/portfolio/${item.id}`} className={styles.portfolioCard} style={{ display: 'block', textDecoration: 'none', color: 'inherit' }}>
+            <div className={styles.imageWrapper}>
+                <img
+                    src={images[currentImageIndex]}
+                    alt={item.title}
+                    className={styles.cardImage}
+                />
+                {item.isNew && <span className={styles.newBadge}>NEW</span>}
+                {images.length > 1 && (
+                    <div className={styles.miniSliderDots}>
+                        {images.map((_, idx) => (
+                            <span
+                                key={idx}
+                                className={`${styles.miniDot} ${idx === currentImageIndex ? styles.activeMiniDot : ''}`}
+                            />
+                        ))}
+                    </div>
+                )}
+            </div>
+            <div className={styles.cardInfo}>
+                <h3 className={styles.cardTitle}>{item.title}</h3>
+                <ul className={styles.cardMeta}>
+                    <li>
+                        <span className={styles.metaLabel}>WORK :</span> {item.workType}
+                    </li>
+                    <li>
+                        <span className={styles.metaLabel}>클라이언트 :</span> {item.client}
+                    </li>
+                </ul>
+            </div>
+        </Link>
+    );
+}
 
 // 포트폴리오 데이터 (명함 카테고리)
 const allPortfolioItems = [
@@ -380,8 +448,8 @@ const allPortfolioItems = [
     // 리플렛
     {
         id: '34',
-        title: '리플렛 디자인 A',
-        thumbnail: '/portfolio/리플렛/스크린샷 2025-12-23 112740.png',
+        title: '감정노동자 보호 리플렛',
+        thumbnail: '/portfolio/리플렛/감정노동자 보호.png',
         workType: '리플렛 디자인',
         client: '클라이언트',
         designer: 'PIUM',
@@ -391,8 +459,8 @@ const allPortfolioItems = [
     },
     {
         id: '35',
-        title: '리플렛 디자인 B',
-        thumbnail: '/portfolio/리플렛/스크린샷 2025-12-23 120005.png',
+        title: '깨끗하고 안전한 수돗물 리플렛',
+        thumbnail: '/portfolio/리플렛/깨끗하고 안전한 수돗물.png',
         workType: '리플렛 디자인',
         client: '클라이언트',
         designer: 'PIUM',
@@ -402,8 +470,8 @@ const allPortfolioItems = [
     },
     {
         id: '36',
-        title: '리플렛 디자인 C',
-        thumbnail: '/portfolio/리플렛/스크린샷 2025-12-24 211937.png',
+        title: '녹용 사슴의 신비 리플렛',
+        thumbnail: '/portfolio/리플렛/녹용 사슴의 신비.png',
         workType: '리플렛 디자인',
         client: '클라이언트',
         designer: 'PIUM',
@@ -413,8 +481,8 @@ const allPortfolioItems = [
     },
     {
         id: '37',
-        title: '리플렛 디자인 D',
-        thumbnail: '/portfolio/리플렛/Gemini_Generated_Image_3t0myp3t0myp3t0m.png',
+        title: '늘봄오는날 리플렛',
+        thumbnail: '/portfolio/리플렛/늘봄오는날.png',
         workType: '리플렛 디자인',
         client: '클라이언트',
         designer: 'PIUM',
@@ -424,8 +492,8 @@ const allPortfolioItems = [
     },
     {
         id: '38',
-        title: '리플렛 디자인 E',
-        thumbnail: '/portfolio/리플렛/스크린샷 2025-12-24 212024.png',
+        title: '다사랑 장애인 거주시설 이용안내',
+        thumbnail: '/portfolio/리플렛/다사랑 장애인 거주시설 이용안내.png',
         workType: '리플렛 디자인',
         client: '클라이언트',
         designer: 'PIUM',
@@ -435,8 +503,8 @@ const allPortfolioItems = [
     },
     {
         id: '39',
-        title: '리플렛 디자인 F',
-        thumbnail: '/portfolio/리플렛/스크린샷 2025-12-24 212037.png',
+        title: '봉담읍둘레길 스토리 발굴',
+        thumbnail: '/portfolio/리플렛/봉담읍둘레길 스토리 발굴.png',
         workType: '리플렛 디자인',
         client: '클라이언트',
         designer: 'PIUM',
@@ -446,8 +514,8 @@ const allPortfolioItems = [
     },
     {
         id: '40',
-        title: '리플렛 디자인 G',
-        thumbnail: '/portfolio/리플렛/Gemini_Generated_Image_i5n7kwi5n7kwi5n7.png',
+        title: '실감미디어 체험교실 리플렛',
+        thumbnail: '/portfolio/리플렛/실감미디어 체험교실.png',
         workType: '리플렛 디자인',
         client: '클라이언트',
         designer: 'PIUM',
@@ -457,8 +525,8 @@ const allPortfolioItems = [
     },
     {
         id: '41',
-        title: '리플렛 디자인 H',
-        thumbnail: '/portfolio/리플렛/Gemini_Generated_Image_iz7r70iz7r70iz7r.png',
+        title: '일미 급식 리플렛',
+        thumbnail: '/portfolio/리플렛/일미 급식 리플렛.png',
         workType: '리플렛 디자인',
         client: '클라이언트',
         designer: 'PIUM',
@@ -468,8 +536,30 @@ const allPortfolioItems = [
     },
     {
         id: '42',
-        title: '리플렛 디자인 I',
-        thumbnail: '/portfolio/리플렛/스크린샷 2025-12-26 214154.png',
+        title: '전주기전대학 일자리플러스센터',
+        thumbnail: '/portfolio/리플렛/전주기전대학 일자리플러스센터.png',
+        workType: '리플렛 디자인',
+        client: '전주기전대학',
+        designer: 'PIUM',
+        isBest: false,
+        isNew: true,
+        category: 'leaflet',
+    },
+    {
+        id: '43',
+        title: '전주기전대학 혁신역량캠퍼스',
+        thumbnail: '/portfolio/리플렛/전주기전대학 혁신역량캠퍼스.png',
+        workType: '리플렛 디자인',
+        client: '전주기전대학',
+        designer: 'PIUM',
+        isBest: false,
+        isNew: true,
+        category: 'leaflet',
+    },
+    {
+        id: '44',
+        title: '창립70주년 리플렛',
+        thumbnail: '/portfolio/리플렛/창립70주년.png',
         workType: '리플렛 디자인',
         client: '클라이언트',
         designer: 'PIUM',
@@ -477,14 +567,215 @@ const allPortfolioItems = [
         isNew: true,
         category: 'leaflet',
     },
+    {
+        id: '58',
+        title: '함께 줍깅 리플렛',
+        thumbnail: '/portfolio/리플렛/함꼐 줍깅.png',
+        workType: '리플렛 디자인',
+        client: '클라이언트',
+        designer: 'PIUM',
+        isBest: false,
+        isNew: true,
+        category: 'leaflet',
+    },
+    // 카드뉴스 • SNS
+    {
+        id: '45',
+        title: '카드뉴스 디자인 A',
+        thumbnail: '/portfolio/카드뉴스/스크린샷 2026-01-05 173250.png',
+        workType: '카드뉴스 디자인',
+        client: '클라이언트',
+        designer: 'PIUM',
+        isBest: false,
+        isNew: true,
+        category: 'cardnews',
+    },
+    // 카탈로그 • 책자 - 금천구아동친화예산서
+    {
+        id: '46',
+        title: '금천구 아동친화 예산서',
+        thumbnail: '/portfolio/카탈로그/금천구아동친화예산서/스크린샷 2026-01-06 143340.png',
+        images: [
+            '/portfolio/카탈로그/금천구아동친화예산서/스크린샷 2026-01-06 143340.png',
+        ],
+        workType: '카탈로그 디자인',
+        client: '금천구',
+        designer: 'PIUM',
+        isBest: false,
+        isNew: true,
+        category: 'catalog',
+    },
+    // 카탈로그 • 책자 - 기배동 주민총회 (슬라이드)
+    {
+        id: '47',
+        title: '기배동 주민총회',
+        thumbnail: '/portfolio/카탈로그/기배동 주민총회/기배동주민총회.png',
+        images: [
+            '/portfolio/카탈로그/기배동 주민총회/기배동주민총회.png',
+            '/portfolio/카탈로그/기배동 주민총회/기배동주민총회1.jpg',
+            '/portfolio/카탈로그/기배동 주민총회/기배동주민총회2.jpg',
+            '/portfolio/카탈로그/기배동 주민총회/기배동주민총회3.jpg',
+            '/portfolio/카탈로그/기배동 주민총회/기배동주민총회4.jpg',
+        ],
+        workType: '카탈로그 디자인',
+        client: '기배동',
+        designer: 'PIUM',
+        isBest: false,
+        isNew: true,
+        category: 'catalog',
+    },
+    // 카탈로그 • 책자 - 전주동초
+    {
+        id: '48',
+        title: '전주동초 카탈로그',
+        thumbnail: '/portfolio/카탈로그/전주동초/스크린샷 2026-01-06 115819.png',
+        images: [
+            '/portfolio/카탈로그/전주동초/스크린샷 2026-01-06 115819.png',
+        ],
+        workType: '카탈로그 디자인',
+        client: '전주동초',
+        designer: 'PIUM',
+        isBest: false,
+        isNew: true,
+        category: 'catalog',
+    },
+    // 상패
+    {
+        id: '57',
+        title: '63골프친구들 상패',
+        thumbnail: '/portfolio/상패/63골프친구들/화면 캡처 2026-01-08 134204.png',
+        workType: '상패 디자인',
+        client: '63골프친구들',
+        designer: 'PIUM',
+        isBest: false,
+        isNew: true,
+        category: 'plaque',
+    },
+    // LOGO 디자인
+    {
+        id: '55',
+        title: '라움뮤직 로고',
+        thumbnail: '/portfolio/logo/라움뮤직/라움뮤직-01.jpg',
+        images: [
+            '/portfolio/logo/라움뮤직/라움뮤직-01.jpg',
+            '/portfolio/logo/라움뮤직/라움뮤직-02.jpg',
+        ],
+        workType: 'LOGO 디자인',
+        client: '라움뮤직',
+        designer: 'PIUM',
+        isBest: false,
+        isNew: true,
+        category: 'logo',
+    },
+    {
+        id: '56',
+        title: '하이안코리아 로고',
+        thumbnail: '/portfolio/logo/하이안코리아/하이안코리아-02.jpg',
+        workType: 'LOGO 디자인',
+        client: '하이안코리아',
+        designer: 'PIUM',
+        isBest: false,
+        isNew: true,
+        category: 'logo',
+    },
+    // SIGN 디자인 - 새 이미지
+    {
+        id: '49',
+        title: '소담김밥 네온사인',
+        thumbnail: '/portfolio/sign/소담김밥네온.png',
+        images: [
+            '/portfolio/sign/소담김밥네온.png',
+            '/portfolio/sign/소담김밥네온1.png',
+        ],
+        workType: 'SIGN 디자인',
+        client: '소담김밥',
+        designer: 'PIUM',
+        isBest: false,
+        isNew: true,
+        category: 'sign',
+        subCategory: 'neon',
+    },
+    {
+        id: '50',
+        title: '용당2동 사인',
+        thumbnail: '/portfolio/sign/용당2동.png',
+        images: [
+            '/portfolio/sign/용당2동.png',
+            '/portfolio/sign/용당2동1.png',
+        ],
+        workType: 'SIGN 디자인',
+        client: '용당2동',
+        designer: 'PIUM',
+        isBest: false,
+        isNew: true,
+        category: 'sign',
+        subCategory: 'signboard',
+    },
+    {
+        id: '51',
+        title: '청라김밥 사인',
+        thumbnail: '/portfolio/sign/청라김밥.png',
+        images: [
+            '/portfolio/sign/청라김밥.png',
+            '/portfolio/sign/청라김밥1.png',
+        ],
+        workType: 'SIGN 디자인',
+        client: '청라김밥',
+        designer: 'PIUM',
+        isBest: false,
+        isNew: true,
+        category: 'sign',
+        subCategory: 'signboard',
+    },
+    {
+        id: '52',
+        title: '청춘과일 사인',
+        thumbnail: '/portfolio/sign/청춘과일.png',
+        workType: 'SIGN 디자인',
+        client: '청춘과일',
+        designer: 'PIUM',
+        isBest: false,
+        isNew: true,
+        category: 'sign',
+        subCategory: 'signboard',
+    },
+    {
+        id: '53',
+        title: '통뼈감자탕 사인',
+        thumbnail: '/portfolio/sign/통뼈감자탕.png',
+        images: [
+            '/portfolio/sign/통뼈감자탕.png',
+            '/portfolio/sign/통뼈감자탕1.png',
+        ],
+        workType: 'SIGN 디자인',
+        client: '통뼈감자탕',
+        designer: 'PIUM',
+        isBest: false,
+        isNew: true,
+        category: 'sign',
+        subCategory: 'signboard',
+    },
+    {
+        id: '54',
+        title: '풍금식당 사인',
+        thumbnail: '/portfolio/sign/풍금식당.png',
+        workType: 'SIGN 디자인',
+        client: '풍금식당',
+        designer: 'PIUM',
+        isBest: false,
+        isNew: true,
+        category: 'sign',
+        subCategory: 'signboard',
+    },
 ];
 
 // 카테고리 필터 (점 포함 스타일)
 const categories = [
     { id: 'all', label: '전체', hasDot: true },
+    { id: 'logo', label: 'LOGO', hasDot: true },
     { id: 'sign', label: 'SIGN 디자인', hasDot: true },
     { id: 'banner', label: '현수막', hasDot: true },
-    { id: 'catalog', label: '카탈로그 • 브로슈어', hasDot: true },
+    { id: 'catalog', label: '카탈로그 • 책자', hasDot: true },
     { id: 'leaflet', label: '리플렛', hasDot: true },
     { id: 'flyer', label: '전단지 • 포스터', hasDot: true },
     { id: 'cardnews', label: '카드뉴스 • SNS', hasDot: true },
@@ -495,17 +786,46 @@ const categories = [
 
 const ITEMS_PER_PAGE = 6;
 
-export default function PortfolioPage() {
+// SIGN 서브 카테고리
+const signSubCategories = [
+    { id: 'all', label: '전체' },
+    { id: 'signboard', label: '간판' },
+    { id: 'neon', label: '네온' },
+    { id: 'standing', label: '입간판' },
+];
+
+function PortfolioContent() {
+    const searchParams = useSearchParams();
+    const initialCategory = searchParams.get('category') || 'all';
+
     const [currentPage, setCurrentPage] = useState(1);
-    const [activeCategory, setActiveCategory] = useState('all');
+    const [activeCategory, setActiveCategory] = useState(initialCategory);
+    const [activeSignSubCategory, setActiveSignSubCategory] = useState('all');
+
+    // URL 파라미터 변경 시 카테고리 업데이트
+    useEffect(() => {
+        const categoryParam = searchParams.get('category');
+        if (categoryParam) {
+            setActiveCategory(categoryParam);
+            setCurrentPage(1);
+        }
+    }, [searchParams]);
 
     // 카테고리별 필터링
-    const filteredItems = activeCategory === 'all'
+    let filteredItems = activeCategory === 'all'
         ? allPortfolioItems
         : allPortfolioItems.filter(item => item.category === activeCategory);
 
+    // SIGN 카테고리 선택 시 서브 카테고리 필터링
+    if (activeCategory === 'sign' && activeSignSubCategory !== 'all') {
+        filteredItems = filteredItems.filter(item => (item as CatalogItem).subCategory === activeSignSubCategory);
+    }
+
     const bestItems = filteredItems.filter(item => item.isBest);
-    const regularItems = filteredItems.filter(item => !item.isBest);
+    // 최신순 정렬 (ID 높은 순)
+    const regularItems = filteredItems
+        .filter(item => !item.isBest)
+        .sort((a, b) => parseInt(b.id) - parseInt(a.id));
 
     // 페이지네이션 계산
     const totalPages = Math.ceil(regularItems.length / ITEMS_PER_PAGE);
@@ -516,6 +836,13 @@ export default function PortfolioPage() {
     // 카테고리 변경 시 페이지 초기화
     const handleCategoryChange = (categoryId: string) => {
         setActiveCategory(categoryId);
+        setActiveSignSubCategory('all');
+        setCurrentPage(1);
+    };
+
+    // 서브 카테고리 변경
+    const handleSignSubCategoryChange = (subCategoryId: string) => {
+        setActiveSignSubCategory(subCategoryId);
         setCurrentPage(1);
     };
 
@@ -525,6 +852,17 @@ export default function PortfolioPage() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }, 100);
     };
+
+    // 카탈로그 슬라이더 상태
+    const [catalogSlideIndex, setCatalogSlideIndex] = useState(0);
+    const catalogItems = allPortfolioItems.filter(item => item.category === 'catalog');
+
+    const goToCatalogSlide = (index: number) => {
+        if (index >= 0 && index < catalogItems.length) {
+            setCatalogSlideIndex(index);
+        }
+    };
+
 
     return (
         <Layout>
@@ -548,6 +886,21 @@ export default function PortfolioPage() {
                     ))}
                 </div>
 
+                {/* SIGN 서브 카테고리 탭 */}
+                {activeCategory === 'sign' && (
+                    <div className={styles.subCategoryTabs}>
+                        {signSubCategories.map((sub) => (
+                            <button
+                                key={sub.id}
+                                onClick={() => handleSignSubCategoryChange(sub.id)}
+                                className={`${styles.subCategoryTab} ${activeSignSubCategory === sub.id ? styles.activeSubTab : ''}`}
+                            >
+                                {sub.label}
+                            </button>
+                        ))}
+                    </div>
+                )}
+
                 {/* 메인 포트폴리오 그리드 */}
                 <section className={styles.portfolioSection}>
                     <div className={styles.sortBar}>
@@ -561,29 +914,10 @@ export default function PortfolioPage() {
                         </select>
                     </div>
 
+                    {/* 모든 카테고리 그리드 */}
                     <div className={styles.portfolioGrid}>
                         {currentItems.map((item) => (
-                            <a key={item.id} href={`/portfolio/${item.id}`} className={styles.portfolioCard}>
-                                <div className={styles.imageWrapper}>
-                                    <img
-                                        src={item.thumbnail}
-                                        alt={item.title}
-                                        className={styles.cardImage}
-                                    />
-                                    {item.isNew && <span className={styles.newBadge}>NEW</span>}
-                                </div>
-                                <div className={styles.cardInfo}>
-                                    <h3 className={styles.cardTitle}>{item.title}</h3>
-                                    <ul className={styles.cardMeta}>
-                                        <li>
-                                            <span className={styles.metaLabel}>WORK :</span> {item.workType}
-                                        </li>
-                                        <li>
-                                            <span className={styles.metaLabel}>클라이언트 :</span> {item.client}
-                                        </li>
-                                    </ul>
-                                </div>
-                            </a>
+                            <CatalogCard key={item.id} item={item} />
                         ))}
                     </div>
                 </section>
@@ -637,5 +971,24 @@ export default function PortfolioPage() {
                 </div>
             </div >
         </Layout >
+    );
+}
+
+export default function PortfolioPage() {
+    return (
+        <Suspense fallback={
+            <Layout>
+                <div className={styles.container}>
+                    <div className={styles.pageHeader}>
+                        <h1 className={styles.pageTitle}>포트폴리오 •</h1>
+                    </div>
+                    <div style={{ textAlign: 'center', padding: '60px 0', color: '#888' }}>
+                        로딩 중...
+                    </div>
+                </div>
+            </Layout>
+        }>
+            <PortfolioContent />
+        </Suspense>
     );
 }
