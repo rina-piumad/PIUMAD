@@ -10,9 +10,11 @@ interface Slide {
     id: string;
     title: string;
     subtitle?: string;
+    description?: string;
     image: string;
     link?: string;
     badge?: string;
+    color?: string;
 }
 
 interface HeroSliderProps {
@@ -60,21 +62,27 @@ export default function HeroSlider({
                     >
                         {slides.map((slide) => (
                             <div key={slide.id} className={styles.slide}>
-                                <a href={slide.link || '#'} className={styles.slideLink}>
+                                <div className={styles.slideContent} style={{ background: slide.color || '#F8F8F8' }}>
+                                    <div className={styles.textContent}>
+                                        {slide.badge && <span className={styles.badge}>{slide.badge}</span>}
+                                        <h3 className={styles.slideSubtitle}>{slide.subtitle}</h3>
+                                        <h2 className={styles.slideTitle}>{slide.title}</h2>
+                                        <p className={styles.slideDescription}>{slide.description}</p>
+                                        {slide.link && (
+                                            <a href={slide.link} className={styles.moreButton}>
+                                                더 보기
+                                            </a>
+                                        )}
+                                    </div>
                                     <div className={styles.imageWrapper}>
                                         <img
                                             src={slide.image}
                                             alt={slide.title}
                                             className={styles.slideImage}
                                             loading="eager"
-                                            onError={(e) => {
-                                                console.error('Image failed to load:', slide.image);
-                                                (e.target as HTMLImageElement).style.background = 'red';
-                                            }}
                                         />
-
                                     </div>
-                                </a>
+                                </div>
                             </div>
                         ))}
                     </div>

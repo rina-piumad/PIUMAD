@@ -641,10 +641,10 @@ export const allPortfolioItems: PortfolioItem[] = [
     {
         id: '55',
         title: '라움뮤직 로고',
-        thumbnail: '/portfolio/logo/라움뮤직/라움뮤직-01.jpg',
+        thumbnail: '/portfolio/LOGO/라움뮤직/라움뮤직-01.jpg',
         images: [
-            '/portfolio/logo/라움뮤직/라움뮤직-01.jpg',
-            '/portfolio/logo/라움뮤직/라움뮤직-02.jpg',
+            '/portfolio/LOGO/라움뮤직/라움뮤직-01.jpg',
+            '/portfolio/LOGO/라움뮤직/라움뮤직-02.jpg',
         ],
         workType: 'LOGO 디자인',
         client: '라움뮤직',
@@ -656,7 +656,7 @@ export const allPortfolioItems: PortfolioItem[] = [
     {
         id: '56',
         title: '하이안코리아 로고',
-        thumbnail: '/portfolio/logo/하이안코리아/하이안코리아-02.jpg',
+        thumbnail: '/portfolio/LOGO/하이안코리아/하이안코리아-02.jpg',
         workType: 'LOGO 디자인',
         client: '하이안코리아',
         designer: 'PIUM',
@@ -668,10 +668,10 @@ export const allPortfolioItems: PortfolioItem[] = [
     {
         id: '49',
         title: '소담김밥 네온사인',
-        thumbnail: '/portfolio/sign/소담김밥네온.png',
+        thumbnail: '/portfolio/SIGN/소담김밥네온.png',
         images: [
-            '/portfolio/sign/소담김밥네온.png',
-            '/portfolio/sign/소담김밥네온1.png',
+            '/portfolio/SIGN/소담김밥네온.png',
+            '/portfolio/SIGN/소담김밥네온1.png',
         ],
         workType: 'SIGN 디자인',
         client: '소담김밥',
@@ -683,10 +683,10 @@ export const allPortfolioItems: PortfolioItem[] = [
     {
         id: '50',
         title: '용당2동 사인',
-        thumbnail: '/portfolio/sign/용당2동.png',
+        thumbnail: '/portfolio/SIGN/용당2동.png',
         images: [
-            '/portfolio/sign/용당2동.png',
-            '/portfolio/sign/용당2동1.png',
+            '/portfolio/SIGN/용당2동.png',
+            '/portfolio/SIGN/용당2동1.png',
         ],
         workType: 'SIGN 디자인',
         client: '용당2동',
@@ -698,10 +698,10 @@ export const allPortfolioItems: PortfolioItem[] = [
     {
         id: '51',
         title: '청라김밥 사인',
-        thumbnail: '/portfolio/sign/청라김밥.png',
+        thumbnail: '/portfolio/SIGN/청라김밥.png',
         images: [
-            '/portfolio/sign/청라김밥.png',
-            '/portfolio/sign/청라김밥1.png',
+            '/portfolio/SIGN/청라김밥.png',
+            '/portfolio/SIGN/청라김밥1.png',
         ],
         workType: 'SIGN 디자인',
         client: '청라김밥',
@@ -713,7 +713,7 @@ export const allPortfolioItems: PortfolioItem[] = [
     {
         id: '52',
         title: '청춘과일 사인',
-        thumbnail: '/portfolio/sign/청춘과일.png',
+        thumbnail: '/portfolio/SIGN/청춘과일.png',
         workType: 'SIGN 디자인',
         client: '청춘과일',
         designer: 'PIUM',
@@ -724,10 +724,10 @@ export const allPortfolioItems: PortfolioItem[] = [
     {
         id: '53',
         title: '통뼈감자탕 사인',
-        thumbnail: '/portfolio/sign/통뼈감자탕.png',
+        thumbnail: '/portfolio/SIGN/통뼈감자탕.png',
         images: [
-            '/portfolio/sign/통뼈감자탕.png',
-            '/portfolio/sign/통뼈감자탕1.png',
+            '/portfolio/SIGN/통뼈감자탕.png',
+            '/portfolio/SIGN/통뼈감자탕1.png',
         ],
         workType: 'SIGN 디자인',
         client: '통뼈감자탕',
@@ -739,7 +739,7 @@ export const allPortfolioItems: PortfolioItem[] = [
     {
         id: '54',
         title: '풍금식당 사인',
-        thumbnail: '/portfolio/sign/풍금식당.png',
+        thumbnail: '/portfolio/SIGN/풍금식당.png',
         workType: 'SIGN 디자인',
         client: '풍금식당',
         designer: 'PIUM',

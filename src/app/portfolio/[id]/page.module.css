@@ -230,7 +230,9 @@
 }
 
 .tabButton {
-    padding: 16px 32px;
+    flex: 1;
+    padding: 16px 0;
+    text-align: center;
     background: none;
     border: none;
     border-bottom: 2px solid transparent;

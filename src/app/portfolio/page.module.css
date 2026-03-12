@@ -65,6 +65,80 @@
     margin-left: 2px;
 }
 
+/* 카테고리 아이콘 그리드 */
+.categoryIcons {
+    padding: 20px 0 40px;
+}
+
+.categoryGrid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.categoryIconItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 0;
+}
+
+.categoryIconItem:hover {
+    transform: translateY(-4px);
+}
+
+.iconCircle {
+    width: 60px;
+    height: 60px;
+    background: #F5F5F5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    transition: all 0.2s ease;
+}
+
+.activeIconItem .iconCircle {
+    background: #333;
+}
+
+.categoryIconItem:hover .iconCircle {
+    background: #EEE;
+}
+
+.iconEmoji {
+    font-size: 24px;
+}
+
+.activeIconItem .iconEmoji {
+    filter: brightness(10);
+}
+
+.iconLabel {
+    font-size: 12px;
+    font-weight: 500;
+    color: #666;
+}
+
+.activeIconItem .iconLabel {
+    color: #333;
+    font-weight: 700;
+}
+
+/* 카테고리 탭 (기존 스타일 유지/백업) */
+.categoryTabs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
 /* 서브 카테고리 탭 */
 .subCategoryTabs {
     display: flex;
@@ -316,9 +390,17 @@
     transition: transform 0.3s ease;
 }
 
-.portfolioCard:hover .cardImage,
-.bestCard:hover .cardImage {
-    transform: scale(1.03);
+.bestBadge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #FFB800;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    z-index: 2;
 }
 
 .newBadge {
