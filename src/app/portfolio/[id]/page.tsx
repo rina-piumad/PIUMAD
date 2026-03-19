@@ -134,7 +134,7 @@ export default function PortfolioDetailPage() {
                         className={`${styles.tabButton} ${activeTab === 'chat' ? styles.activeTab : ''}`}
                         onClick={() => setActiveTab('chat')}
                     >
-                        카카오톡 상담
+                        카카오톡 상담 <span className={styles.thunder}>⚡</span>
                     </button>
                 </div>
 

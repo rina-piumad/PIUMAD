@@ -13,7 +13,7 @@ const heroSlides = [
         subtitle: 'LEAFLET DESIGN',
         title: '한장! 가장 효율적인 홍보\n리플렛 디자인',
         description: '다양한 내용을 가장 효율적으로 홍보할 수 있는 리플렛 디자인을 만나보세요.',
-        image: '/portfolio/리플렛/함께 줍깅.png',
+        image: '/portfolio/리플렛/함꼐 줍깅.png',
         badge: 'NEW',
         color: '#F9F9F9',
         link: '/portfolio?category=leaflet'

@@ -225,7 +225,7 @@
 .detailTabs {
     display: flex;
     gap: 0;
-    border-bottom: 2px solid var(--color-border);
+    border-bottom: 1px solid #E5E5E5;
     margin-bottom: 40px;
 }
 
@@ -236,21 +236,25 @@
     background: none;
     border: none;
     border-bottom: 2px solid transparent;
-    margin-bottom: -2px;
-    font-size: 16px;
+    margin-bottom: -1px;
+    font-size: 15px;
     font-weight: 500;
-    color: var(--color-text-secondary);
+    color: #777777;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
 .tabButton:hover {
-    color: var(--color-text);
+    color: #111111;
 }
 
 .tabButton.activeTab {
-    color: var(--color-text);
-    border-bottom-color: var(--color-text);
+    color: #111111;
+    border-bottom-color: #111111;
+}
+
+.thunder {
+    color: #FF7A00;
 }
 
 /* 탭 콘텐츠 */
