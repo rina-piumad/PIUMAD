@@ -54,6 +54,12 @@ export default function HeroSlider({
     return (
         <section className={styles.sliderSection}>
             <div className={styles.sliderContainer}>
+                {slides.length > 1 && (
+                    <>
+                        <button className={styles.prevButton} onClick={goToPrev}>‹</button>
+                        <button className={styles.nextButton} onClick={goToNext}>›</button>
+                    </>
+                )}
                 {/* Slides */}
                 <div className={styles.slidesWrapper}>
                     <div

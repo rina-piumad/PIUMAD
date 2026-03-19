@@ -100,15 +100,14 @@
 
 /* 뱃지 */
 .badge {
-    position: absolute;
-    top: 16px;
-    left: 16px;
+    display: inline-block;
     background: #DC3545;
     color: white;
     font-size: 12px;
     font-weight: 600;
     padding: 6px 12px;
     border-radius: 4px;
+    margin-bottom: 12px;
 }
 
 /* Navigation */
