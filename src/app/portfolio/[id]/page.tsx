@@ -4,15 +4,49 @@
 'use client';
 
 import { useState } from 'react';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { Layout } from '@/components/layout';
 import styles from './page.module.css';
 import { allPortfolioItems } from '@/data/portfolioData';
 
 export default function PortfolioDetailPage() {
     const params = useParams();
+    const router = useRouter();
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [activeTab, setActiveTab] = useState('info');
+
+    // E-commerce state for namecards
+    const [selectedOptions, setSelectedOptions] = useState<{ id: string, name: string, price: number, quantity: number }[]>([]);
+
+    const paperOptions = [
+        { id: 'normal', name: '일반용지 500매', price: 30000 },
+        { id: 'premium', name: '수입용지 200매', price: 30000 },
+    ];
+
+    const handleAddOption = (option: typeof paperOptions[0]) => {
+        const existing = selectedOptions.find(o => o.id === option.id);
+        if (existing) {
+            setSelectedOptions(selectedOptions.map(o => o.id === option.id ? { ...o, quantity: o.quantity + 1 } : o));
+        } else {
+            setSelectedOptions([...selectedOptions, { ...option, quantity: 1 }]);
+        }
+    };
+
+    const handleUpdateQuantity = (id: string, delta: number) => {
+        setSelectedOptions(selectedOptions.map(o => {
+            if (o.id === id) {
+                const newQuantity = Math.max(1, o.quantity + delta);
+                return { ...o, quantity: newQuantity };
+            }
+            return o;
+        }));
+    };
+
+    const handleRemoveOption = (id: string) => {
+        setSelectedOptions(selectedOptions.filter(o => o.id !== id));
+    };
+
+    const totalPrice = selectedOptions.reduce((acc, o) => acc + (o.price * o.quantity), 0);
 
     const id = params.id as string;
     
@@ -79,27 +113,98 @@ export default function PortfolioDetailPage() {
                                 <span className={styles.metaValue}>{portfolio.client}</span>
                             </li>
                             <li>
-                                <span className={styles.metaLabel}>○ 클라이언트</span>
-                                <span className={styles.metaValue}>{portfolio.client}</span>
+                                <span className={styles.metaLabel}>○ 디자이너</span>
+                                <span className={styles.metaValue}>{portfolio.designer}</span>
                             </li>
                         </ul>
 
-                        <div className={styles.processSection}>
-                            <h3 className={styles.processTitle}>제작 STEP</h3>
-                            <div className={styles.processSteps}>
-                                {portfolio.processSteps.map((step, index) => (
-                                    <span key={index} className={styles.step}>
-                                        {step}
-                                        {index < portfolio.processSteps.length - 1 && ' → '}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
+                        {portfolio.category === 'namecard' ? (
+                            <>
+                                <a href="https://pf.kakao.com/_PrxjdG" target="_blank" rel="noopener noreferrer" className={styles.consultationLink}>
+                                    구매전 견적&일정 확인 필수 <span className={styles.consultationHighlight}>[견적 & 일정 실시간 상담하기]</span>
+                                </a>
 
-                        <div className={styles.actionButtons}>
-                            <button className={styles.cartButton}>장바구니</button>
-                            <button className={styles.orderButton}>제작 의뢰하기</button>
-                        </div>
+                                <div className={styles.processSectionNamecard}>
+                                    <h3 className={styles.processTitleNamecard}>※제작 STEP</h3>
+                                    <div className={styles.processStepsNamecard}>
+                                        [견적&일정 확인] → [결제진행] → [제작 및 시안전달] → [수정 및 시안확정]
+                                    </div>
+                                </div>
+
+                                <div className={styles.optionSection}>
+                                    <h4 className={styles.optionTitle}>디자인 품목 - 명함 디자인&인쇄</h4>
+                                    <div className={styles.optionButtonGroup}>
+                                        <button className={`${styles.optionButton} ${styles.active}`}>명함 디자인&인쇄</button>
+                                    </div>
+                                </div>
+
+                                <div className={styles.optionSection}>
+                                    <h4 className={styles.optionTitle}>용지 TYPE - 기본 30,000원</h4>
+                                    <div className={styles.optionButtonGroup}>
+                                        {paperOptions.map(opt => (
+                                            <button 
+                                                key={opt.id} 
+                                                className={styles.optionButton}
+                                                onClick={() => handleAddOption(opt)}
+                                            >
+                                                {opt.name}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {selectedOptions.length > 0 && (
+                                    <div className={styles.cartList}>
+                                        {selectedOptions.map(opt => (
+                                            <div key={opt.id} className={styles.cartItem}>
+                                                <div className={styles.cartItemInfo}>
+                                                    <p className={styles.cartItemTitle}>명함 디자인&인쇄/{opt.name}</p>
+                                                    <p className={styles.cartItemPrice}>{(opt.price * opt.quantity).toLocaleString()}원</p>
+                                                </div>
+                                                <div className={styles.cartItemControls}>
+                                                    <div className={styles.quantityControl}>
+                                                        <button className={styles.quantityBtn} onClick={() => handleUpdateQuantity(opt.id, -1)}>−</button>
+                                                        <div className={styles.quantityValue}>{opt.quantity}</div>
+                                                        <button className={styles.quantityBtn} onClick={() => handleUpdateQuantity(opt.id, 1)}>+</button>
+                                                    </div>
+                                                    <button className={styles.removeBtn} onClick={() => handleRemoveOption(opt.id)}>✕</button>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+
+                                <div className={styles.totalSection}>
+                                    <span className={styles.totalLabel}>총 상품금액</span>
+                                    <span className={styles.totalPrice}>{totalPrice.toLocaleString()}원</span>
+                                </div>
+
+                                <div className={styles.actionButtonsNamecard}>
+                                    <button className={styles.wishButton}>☆</button>
+                                    <button className={styles.cartButtonNamecard}>장바구니</button>
+                                    <button className={styles.orderButtonNamecard} onClick={() => router.push('/login')}>제작 의뢰하기</button>
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <div className={styles.processSection}>
+                                    <h3 className={styles.processTitle}>제작 STEP</h3>
+                                    <div className={styles.processSteps}>
+                                        {portfolio.processSteps.map((step, index) => (
+                                            <span key={index} className={styles.step}>
+                                                {step}
+                                                {index < portfolio.processSteps.length - 1 && ' → '}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className={styles.actionButtons}>
+                                    <button className={styles.cartButton}>장바구니</button>
+                                    <button className={styles.orderButton} onClick={() => router.push('/login')}>제작 의뢰하기</button>
+                                </div>
+                            </>
+                        )}
                     </div>
                 </div>
 
@@ -178,7 +283,7 @@ export default function PortfolioDetailPage() {
                             <h3>카카오톡 상담</h3>
                             <p>카카오톡으로 편하게 문의해주세요!</p>
                             <a
-                                href="https://pf.kakao.com/_example"
+                                href="https://pf.kakao.com/_PrxjdG"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={styles.kakaoButton}

@@ -17,15 +17,16 @@ const navigation = [
     { label: '홈', href: '/' },
     { label: 'ABOUT', href: '/about' },
     { label: '포트폴리오 •', href: '/portfolio' },
-    { label: '실시간 상담', href: '/chat' },
+    { label: '실시간 상담', href: 'https://pf.kakao.com/_PrxjdG' },
     { label: '인쇄가이드', href: '/print-guide' },
+    { label: '채용', href: '/recruit' },
     { label: '고객센터', href: '/support' },
 ];
 
 const siteInfo = {
     phone: '010-6314-1261',
     email: 'pium0711@naver.com',
-    kakao: 'https://pf.kakao.com/_example',
+    kakao: 'https://pf.kakao.com/_PrxjdG',
     businessInfo: {
         company: '피움디자인',
         ceo: '최성희',

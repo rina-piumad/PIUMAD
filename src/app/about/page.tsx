@@ -14,7 +14,7 @@ export default function AboutPage() {
                 <section className={styles.pageHeader}>
                     <div className={styles.logoArea}>
                         <img
-                            src="/images/pium-logo.png"
+                            src="/image/pium-logo.png"
                             alt="PIUM Design Logo"
                             className={styles.logoImage}
                             onError={(e) => {

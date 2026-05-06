@@ -10,31 +10,47 @@ import { getLatestPortfolioItems } from '@/data/portfolioData';
 const heroSlides = [
     {
         id: '1',
-        subtitle: 'LEAFLET DESIGN',
-        title: '한장! 가장 효율적인 홍보\n리플렛 디자인',
-        description: '다양한 내용을 가장 효율적으로 홍보할 수 있는 리플렛 디자인을 만나보세요.',
-        image: '/portfolio/리플렛/함꼐 줍깅.png',
-        badge: 'NEW',
-        color: '#F9F9F9',
-        link: '/portfolio?category=leaflet'
+        title: '',
+        subtitle: '',
+        description: '',
+        image: '/main-slides/slide_catalog.jpg',
+        color: '#EAEAEA',
+        link: '/portfolio?category=catalog'
     },
     {
         id: '2',
-        subtitle: 'LOGO DESIGN',
-        title: '브랜드 가치를 담은\n로고 디자인',
-        description: '기업의 아이덴티티를 가장 잘 나타낼 수 있는 감각적인 로고를 제안합니다.',
-        image: '/portfolio/LOGO/라움뮤직/라움뮤직-01.jpg',
-        badge: 'BEST',
-        color: '#F4F4F4',
-        link: '/portfolio?category=logo'
+        title: '',
+        subtitle: '',
+        description: '',
+        image: '/main-slides/slide_leaflet.jpg',
+        color: '#EAEAEA',
+        link: '/portfolio?category=leaflet'
     },
     {
         id: '3',
-        subtitle: 'SIGN DESIGN',
-        title: '시선을 사로잡는\n간판 • 사인 디자인',
-        description: '공간의 분위기를 결정하는 중요한 요소, 최적의 사인 디자인을 제공합니다.',
-        image: '/portfolio/SIGN/소담김밥네온.png',
-        color: '#FFFFFF',
+        title: '',
+        subtitle: '',
+        description: '',
+        image: '/main-slides/slide_cardnews.jpg',
+        color: '#EAEAEA',
+        link: '/portfolio?category=cardnews'
+    },
+    {
+        id: '4',
+        title: '',
+        subtitle: '',
+        description: '',
+        image: '/main-slides/slide_poster.jpg',
+        color: '#EAEAEA',
+        link: '/portfolio?category=flyer'
+    },
+    {
+        id: '5',
+        title: '',
+        subtitle: '',
+        description: '',
+        image: '/main-slides/slide_signage.jpg',
+        color: '#EAEAEA',
         link: '/portfolio?category=sign'
     },
 ];

@@ -61,32 +61,34 @@ export default function HeroSlider({
                     </>
                 )}
                 {/* Slides */}
-                <div className={styles.slidesWrapper}>
-                    <div
-                        className={styles.slides}
-                        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-                    >
-                        {slides.map((slide) => (
-                            <div key={slide.id} className={styles.slide}>
-                                <div className={styles.slideContent} style={{ background: slide.color || '#F8F8F8' }}>
-                                    <div className={styles.textContent}>
-                                        {slide.badge && <span className={styles.badge}>{slide.badge}</span>}
-                                        <h3 className={styles.slideSubtitle}>{slide.subtitle}</h3>
-                                        <h2 className={styles.slideTitle}>{slide.title}</h2>
-                                        <p className={styles.slideDescription}>{slide.description}</p>
-                                        {slide.link && (
-                                            <a href={slide.link} className={styles.moreButton}>
-                                                더 보기
-                                            </a>
-                                        )}
-                                    </div>
+                <div className={styles.slidesWrapper} style={{ '--current-index': currentIndex } as React.CSSProperties}>
+                    <div className={styles.slides}>
+                        {slides.map((slide, index) => (
+                            <div key={slide.id} className={`${styles.slide} ${index === currentIndex ? styles.activeSlide : ''}`}>
+                                <div className={`${styles.slideContent} ${!slide.title ? styles.imageOnlySlide : ''}`} style={{ background: slide.color || '#F8F8F8' }}>
+                                    {slide.title && (
+                                        <div className={styles.textContent}>
+                                            {slide.badge && <span className={styles.badge}>{slide.badge}</span>}
+                                            <h3 className={styles.slideSubtitle}>{slide.subtitle}</h3>
+                                            <h2 className={styles.slideTitle}>{slide.title}</h2>
+                                            <p className={styles.slideDescription}>{slide.description}</p>
+                                            {slide.link && (
+                                                <a href={slide.link} className={styles.moreButton}>
+                                                    보러가기
+                                                </a>
+                                            )}
+                                        </div>
+                                    )}
                                     <div className={styles.imageWrapper}>
                                         <img
                                             src={slide.image}
-                                            alt={slide.title}
+                                            alt={slide.title || 'Slide Image'}
                                             className={styles.slideImage}
                                             loading="eager"
                                         />
+                                    </div>
+                                    <div className={styles.fractionPagination}>
+                                        {index + 1} / {slides.length}
                                     </div>
                                 </div>
                             </div>
@@ -95,19 +97,6 @@ export default function HeroSlider({
                 </div>
             </div>
 
-            {/* Dots */}
-            {slides.length > 1 && (
-                <div className={styles.dots}>
-                    {slides.map((_, index) => (
-                        <button
-                            key={index}
-                            className={`${styles.dot} ${index === currentIndex ? styles.activeDot : ''}`}
-                            onClick={() => setCurrentIndex(index)}
-                            aria-label={`슬라이드 ${index + 1}`}
-                        />
-                    ))}
-                </div>
-            )}
         </section>
     );
 }

@@ -115,6 +115,214 @@
     color: var(--color-text-secondary);
 }
 
+/* E-commerce Options Area for Namecards */
+.consultationLink {
+    display: block;
+    margin: 24px 0;
+    font-size: 15px;
+    color: var(--color-text);
+}
+
+.consultationHighlight {
+    color: #6B21A8;
+    font-weight: 600;
+}
+
+.processSectionNamecard {
+    border-top: 1px solid #E5E5E5;
+    border-bottom: 1px solid #E5E5E5;
+    padding: 24px 0;
+    margin-bottom: 32px;
+}
+
+.processTitleNamecard {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0 0 12px 0;
+}
+
+.processStepsNamecard {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+}
+
+.optionSection {
+    margin-bottom: 24px;
+}
+
+.optionTitle {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin: 0 0 8px 0;
+}
+
+.optionButtonGroup {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.optionButton {
+    padding: 12px 16px;
+    border: 1px solid #E5E5E5;
+    background: white;
+    color: var(--color-text);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.optionButton.active {
+    background: #666666;
+    color: white;
+    border-color: #666666;
+}
+
+.optionButton:hover:not(.active) {
+    border-color: #AAAAAA;
+}
+
+.cartList {
+    margin-top: 32px;
+    border-top: 1px solid #E5E5E5;
+    padding-top: 16px;
+}
+
+.cartItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid #F5F5F5;
+}
+
+.cartItemInfo {
+    flex: 1;
+}
+
+.cartItemTitle {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    margin: 0 0 8px 0;
+}
+
+.cartItemPrice {
+    font-size: 15px;
+    color: var(--color-text);
+    margin: 0;
+}
+
+.cartItemControls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.quantityControl {
+    display: flex;
+    align-items: center;
+    border: 1px solid #E5E5E5;
+    background: white;
+}
+
+.quantityBtn {
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: var(--color-text);
+}
+
+.quantityValue {
+    width: 32px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.removeBtn {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #F5F5F5;
+    border: none;
+    color: #999;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.totalSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+    margin-top: 16px;
+    border-top: 1px solid #E5E5E5;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.totalLabel {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.totalPrice {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.actionButtonsNamecard {
+    display: flex;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+.wishButton {
+    width: 56px;
+    height: 56px;
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+}
+
+.wishButton:hover {
+    border-color: #666;
+}
+
+.cartButtonNamecard {
+    flex: 1;
+    height: 56px;
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.orderButtonNamecard {
+    flex: 1;
+    height: 56px;
+    background: #6B21A8;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
 /* 제작 프로세스 */
 .processSection {
     margin-bottom: 32px;

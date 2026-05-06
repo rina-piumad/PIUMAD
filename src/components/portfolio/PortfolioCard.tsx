@@ -42,13 +42,6 @@ export default function PortfolioCard({
                             <span className={styles.metaValue}>{workType}</span>
                         </li>
                     )}
-                    {category && (
-                        <li className={styles.metaItem}>
-                            <span className={styles.bullet}>ㅇ</span>
-                            <span className={styles.metaLabel}>카테고리</span>
-                            <span className={styles.metaValue}>{category}</span>
-                        </li>
-                    )}
                     {client && (
                         <li className={styles.metaItem}>
                             <span className={styles.bullet}>ㅇ</span>
@@ -56,7 +49,13 @@ export default function PortfolioCard({
                             <span className={styles.metaValue}>{client}</span>
                         </li>
                     )}
-
+                    {designer && (
+                        <li className={styles.metaItem}>
+                            <span className={styles.bullet}>ㅇ</span>
+                            <span className={styles.metaLabel}>디자이너</span>
+                            <span className={styles.metaValue}>{designer}</span>
+                        </li>
+                    )}
                 </ul>
             </div>
         </a>
