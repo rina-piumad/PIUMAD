@@ -1,173 +1,227 @@
 .container {
-    max-width: 500px;
-    margin: 80px auto;
-    padding: 0 24px;
+    max-width: 600px;
+    margin: 60px auto 100px;
+    padding: 0 20px;
 }
 
-.title {
-    text-align: center;
-    font-size: 32px;
+.pageTitle {
+    font-size: 26px;
     font-weight: 700;
-    margin-bottom: 40px;
+    margin-bottom: 25px;
+    color: #111;
     letter-spacing: -0.02em;
 }
 
-.tabs {
+.loginBox {
+    border: 1px solid #E5E5E5;
+    padding: 60px 50px;
+    background: #fff;
+}
+
+.sectionTitle {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+.loginFormRow {
     display: flex;
-    border-bottom: 1px solid #E5E5E5;
-    margin-bottom: 32px;
+    gap: 15px;
+    margin-bottom: 15px;
 }
 
-.tabButton {
+.inputStack {
     flex: 1;
-    padding: 16px 0;
-    background: none;
-    border: none;
-    font-size: 16px;
-    color: #777;
-    cursor: pointer;
-    position: relative;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -1px;
-    transition: all 0.2s ease;
-}
-
-.tabButton.active {
-    color: #111;
-    font-weight: 600;
-    border-bottom-color: #111;
-}
-
-.formTitle {
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 16px;
-    color: #111;
-}
-
-.inputGroup {
     display: flex;
     flex-direction: column;
-    gap: -1px; /* To make borders overlap */
-    margin-bottom: 16px;
 }
 
 .input {
     width: 100%;
-    padding: 14px 16px;
-    border: 1px solid #E5E5E5;
-    font-size: 15px;
+    padding: 14px 15px;
+    border: 1px solid #ddd;
+    font-size: 14px;
     outline: none;
+    color: #333;
 }
 
-.input:focus {
-    border-color: #999;
-    z-index: 1;
-}
-
-.input::placeholder {
-    color: #AAA;
-}
-
-/* Fix overlapping borders */
 .input:first-child {
     border-bottom: none;
 }
 
-.options {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 24px;
+.input:focus {
+    border-color: #aaa;
+    position: relative;
+    z-index: 1;
+}
+
+.input::placeholder {
+    color: #999;
+}
+
+.loginSubmitBtn {
+    width: 150px;
+    background: #F4B2C3; /* Pink from image */
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.loginSubmitBtn:hover {
+    background: #E89EAF;
+}
+
+.saveIdWrapper {
+    margin-bottom: 30px;
 }
 
 .checkboxLabel {
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 14px;
-    color: #555;
+    gap: 8px;
     cursor: pointer;
 }
 
 .checkbox {
     width: 18px;
     height: 18px;
-    border: 1px solid #CCC;
-    border-radius: 2px;
+    border: 1px solid #ccc;
     cursor: pointer;
+    background: white;
 }
 
-.lockIcon {
-    color: #E06C00;
-    font-size: 14px;
+.checkboxText {
+    font-size: 13px;
+    color: #555;
 }
 
-.loginButton {
-    width: 100%;
-    padding: 16px;
-    background: #6B21A8;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-bottom: 24px;
-    transition: background 0.2s;
-}
-
-.loginButton:hover {
-    background: #581C87;
-}
-
-.links {
+.socialLogins {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 40px;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
 }
 
-.link {
-    font-size: 14px;
-    color: #555;
-    text-decoration: none;
-}
-
-.link:hover {
-    color: #111;
-}
-
-.divider {
-    color: #DDD;
-    font-size: 12px;
-}
-
-.nonMemberSection {
-    text-align: center;
-    padding-top: 40px;
-    border-top: 1px solid #F5F5F5;
-}
-
-.nonMemberText {
-    font-size: 14px;
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 24px;
-}
-
-.nonMemberButton {
+.naverBtn, .kakaoBtn {
     width: 100%;
     padding: 16px;
     background: white;
-    color: #111;
-    border: 1px solid #E5E5E5;
-    border-radius: 4px;
-    font-size: 15px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    font-weight: 600;
+    color: #888;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.naverBtn:hover, .kakaoBtn:hover {
+    background: #f9f9f9;
+}
+
+.socialIconWrapper {
+    position: absolute;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.naverIcon {
+    color: #03C75A;
+    font-weight: 900;
+    font-size: 22px;
+}
+
+.kakaoIcon {
+    width: 28px;
+    height: 28px;
+}
+
+.actionLinks {
+    display: flex;
+    gap: 10px;
+}
+
+.actionLinks button {
+    flex: 1;
+    padding: 15px 0;
+    border: 1px solid #e0e0e0;
+    background: white;
+    color: #555;
+    font-size: 13px;
+    font-weight: 500;
     cursor: pointer;
     transition: all 0.2s;
 }
 
-.nonMemberButton:hover {
-    border-color: #999;
+.actionLinks button:hover {
+    background: #fdfdfd;
+    border-color: #d0d0d0;
+}
+
+.actionLinks .signupBtn {
+    background: #F4B2C3;
+    color: white;
+    border-color: #F4B2C3;
+}
+
+.actionLinks .signupBtn:hover {
+    background: #E89EAF;
+    border-color: #E89EAF;
+}
+
+.orderInquiryBtn {
+    width: 150px;
+    background: white;
+    color: #333;
+    border: 1px solid #F4B2C3; /* Pink border */
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.orderInquiryBtn:hover {
+    background: #fffafa;
+}
+
+.infoText {
+    font-size: 13px;
+    color: #999;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.infoIcon {
+    font-size: 14px;
+    color: #aaa;
+}
+
+@media (max-width: 640px) {
+    .loginBox {
+        padding: 30px 20px;
+    }
+    
+    .loginFormRow {
+        flex-direction: column;
+    }
+    
+    .loginSubmitBtn, .orderInquiryBtn {
+        width: 100%;
+        padding: 15px;
+    }
+    
+    .actionLinks {
+        flex-direction: column;
+    }
 }

@@ -85,34 +85,167 @@
     padding: 0 4px;
 }
 
+/* User Dropdown Menu */
+.userMenuContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.userMenuContainer > a {
+    padding-bottom: 20px;
+    margin-bottom: -20px;
+}
+
+.userDropdown {
+    position: absolute;
+    top: calc(100% + 15px);
+    right: -10px;
+    width: 220px;
+    background: #fff;
+    border: 1px solid #eee;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    padding: 20px;
+    display: none;
+    z-index: 200;
+}
+
+.userDropdown::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    right: 18px;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-top: 1px solid #eee;
+    border-left: 1px solid #eee;
+    transform: rotate(45deg);
+}
+
+.userMenuContainer:hover .userDropdown {
+    display: block;
+}
+
+.dropdownHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 16px;
+    border-bottom: 1px dotted #ccc;
+    margin-bottom: 16px;
+}
+
+.dropdownHeader svg {
+    color: #333;
+}
+
+.greeting {
+    display: flex;
+    flex-direction: column;
+}
+
+.hello {
+    color: #48D1B2;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.welcome {
+    color: #888;
+    font-size: 13px;
+}
+
+.dropdownList {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.dropdownList li {
+    margin-bottom: 12px;
+}
+
+.dropdownList li::before {
+    content: '·';
+    margin-right: 6px;
+    color: #999;
+    font-weight: bold;
+}
+
+.dropdownList a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.dropdownList a:hover {
+    color: #000;
+    font-weight: 700;
+}
+
+.dropdownActions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.loginBtn, .signupBtn {
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.loginBtn {
+    background: #1a1a1a;
+    color: #fff;
+    border: 1px solid #1a1a1a;
+}
+
+.loginBtn:hover {
+    background: #000;
+}
+
+.signupBtn {
+    background: #fff;
+    color: #555;
+    border: 1px solid #ddd;
+}
+
+.signupBtn:hover {
+    background: #f9f9f9;
+}
+
 /* 로고 */
 .logo {
+    font-family: 'NanumSquare', sans-serif;
     font-size: 20px;
     font-weight: 800;
     color: #111;
     text-decoration: none;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.05em;
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
 .logo img {
-    height: 40px;
+    height: 48px;
     width: auto;
 }
 
-/* 데스크탑 메뉴 버튼 */
-.desktopMenuButton {
-    background: none;
-    border: none;
-    padding: 4px;
-    cursor: pointer;
-    color: #111;
+/* 오른쪽 섹션 (네비게이션 + 아이콘 + 모바일메뉴) */
+.rightGroup {
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-left: 8px;
+    gap: 16px;
 }
 
 /* 네비게이션 */
@@ -192,8 +325,8 @@
         display: flex;
     }
 
-    .desktopMenuButton {
-        display: none;
+    .rightGroup {
+        gap: 8px;
     }
 
     .headerInner {
@@ -216,6 +349,6 @@
     }
     
     .logo img {
-        height: 32px;
+        height: 36px;
     }
 }
