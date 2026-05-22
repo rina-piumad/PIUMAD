@@ -596,12 +596,13 @@ export const allPortfolioItems: PortfolioItem[] = [
     {
         id: '47',
         title: '기배동 주민총회',
-        thumbnail: '/portfolio/카탈로그/기배동 주민총회/Mesa de trabajo 1.jpg',
+        thumbnail: '/portfolio/카탈로그/기배동 주민총회/기배동주민총회.png',
         images: [
-            '/portfolio/카탈로그/기배동 주민총회/Mesa de trabajo 1.jpg',
-            '/portfolio/카탈로그/기배동 주민총회/Mesa de trabajo 2.jpg',
-            '/portfolio/카탈로그/기배동 주민총회/Mesa de trabajo 3.jpg',
-            '/portfolio/카탈로그/기배동 주민총회/Mesa de trabajo 4.jpg',
+            '/portfolio/카탈로그/기배동 주민총회/기배동주민총회.png',
+            '/portfolio/카탈로그/기배동 주민총회/기배동주민총회1.jpg',
+            '/portfolio/카탈로그/기배동 주민총회/기배동주민총회2.jpg',
+            '/portfolio/카탈로그/기배동 주민총회/기배동주민총회3.jpg',
+            '/portfolio/카탈로그/기배동 주민총회/기배동주민총회4.jpg',
         ],
         workType: '카탈로그 디자인',
         client: '기배동',
